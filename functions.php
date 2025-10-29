@@ -14,28 +14,7 @@
  * plug-in, you can safely delete this block.
  */
 
-/*******************************
- * WOOCOMMERCE FUNCTIONS
- ******************************/
 
-//Declare Theme as WooCommerce supported
-// function theme_add_woocommerce_support() {
-// 	add_theme_support( 'woocommerce' );
-// 	add_theme_support( 'wc-product-gallery-zoom' );
-// 	add_theme_support( 'wc-product-gallery-lightbox' );
-// 	add_theme_support( 'wc-product-gallery-slider' );
-// }
-
-// add_action( 'after_setup_theme', 'theme_add_woocommerce_support' );
-
-// Set woocommerce prodcuct
-// function timber_set_product( $post ) {
-//     global $product;
-
-//     if ( is_woocommerce() ) {
-//         $product = wc_get_product( $post->ID );
-//     }
-// }
 
 $composer_autoload = __DIR__ . '/vendor/autoload.php';
 if ( file_exists( $composer_autoload ) ) {
@@ -193,9 +172,9 @@ class StarterSite extends Timber\Site
 	*/
 	// public function widget_area() {
 	// 	register_sidebar( array(
-	// 		'name'          => esc_html__( 'Sidebar', 'themename' ),
+	// 		'name'          => esc_html__( 'Sidebar', 'infoprag' ),
 	// 		'id'            => 'sidebar-1',
-	// 		'description'   => esc_html__( 'Add widgets here.', 'themename' ),
+	// 		'description'   => esc_html__( 'Add widgets here.', 'infoprag' ),
 	// 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 	// 		'after_widget'  => '</section>',
 	// 		'before_title'  => '<h2 class="widget-title">',
@@ -208,7 +187,7 @@ class StarterSite extends Timber\Site
 		echo '
 			<style type="text/css">
 				.login #login h1 a {
-					background-image: url(' . get_stylesheet_directory_uri() . '/static/images/logo_horizontal_reverse.svg);
+					background-image: url(' . get_stylesheet_directory_uri() . '/static/images/logo/infoprag_logo.jpg);
 					background-size: contain;
 				background-position: center;
 					width: 100%;
@@ -220,7 +199,7 @@ class StarterSite extends Timber\Site
 					opacity: 1;
 				}
 				.login #login #nav a, .login #login #backtoblog a {
-					color: white;
+					color: #284379;
 					opacity: .7;
 					transition: .3s;
 				}
@@ -229,7 +208,7 @@ class StarterSite extends Timber\Site
 				}
 		
 				body {
-					background: #1d2327 !important;
+					background: #fff !important;
 				}
 				// body{
 					
@@ -242,29 +221,29 @@ class StarterSite extends Timber\Site
 				// }
 		
 				.login #login form {
-					background: #2c3338;
+					background: #484848;
 					border: none;
 					border-radius: 5px;
 				}
 				.login #login form .button-secondary {
-					color: #2c3338;
+					color: #484848;
 					opacity: .7;
 					transition: .3s;
 				}
 		
 				.login #login form input:focus {
-					border-color: #03554b;
-					box-shadow: 0 0 0 1px #03554b;
+					border-color: #284379;
+					box-shadow: 0 0 0 1px #284379;
 				}
 				.login #login form .button-primary {
-					background: #03554b;
-					border-color: #03554b;
+					background: #284379;
+					border-color: #284379;
 					transition: .3s;
 				}
 		
 				.login #login form .button-primary:hover {
-					background: #012a25;
-					border-color: #012a25;
+					background: #0046d3;
+					border-color: #0046d3;
 				}
 			</style>';
 	}
@@ -277,7 +256,7 @@ class StarterSite extends Timber\Site
 		
 	// *** login title ***
 	public function login_logo_url_title() {
-		return 'themename';
+		return 'infoprag';
 	}
 
 	// *** Remove unecessary menu items for all but Administrators ***
@@ -321,7 +300,7 @@ class StarterSite extends Timber\Site
 		}
 		#wpadminbar #wp-toolbar #wp-admin-bar-root-default #wp-admin-bar-wp-logo .ab-item .ab-icon:before {
 			display: block;
-			background-image: url(' . get_stylesheet_directory_uri() . '/static/images/logo_horizontal_reverse.svg);
+			background-image: url(' . get_stylesheet_directory_uri() . '/static/images/logo/infoprag_logo.jpg);
 			background-position: center;
 			background-size: contain;
 			background-repeat: no-repeat;
@@ -329,10 +308,10 @@ class StarterSite extends Timber\Site
 			width: 144px;
 		}
 		#wpadminbar {
-			background: #1d2327;
+			background: #000;
 		}
 		#wpadminbar .menupop .ab-sub-wrapper {
-			// background: #2c3338;
+			// background: #484848;
 		}
 		#adminmenu a{
 			// color: #fff;
@@ -357,7 +336,7 @@ class StarterSite extends Timber\Site
 		#wpadminbar #wp-toolbar #wp-admin-bar-top-secondary li.hover > a:before,
 		#wpadminbar #wp-toolbar #wp-admin-bar-top-secondary li:hover > a:before,
 		#wpadminbar #wp-toolbar #wp-admin-bar-top-secondary #adminbarsearch:hover:before {
-			color: #5B9A92;
+			color: #9DF500;
 		}
 	</style>
 	';
@@ -426,7 +405,7 @@ class StarterSite extends Timber\Site
 	 */
 	public function theme_register_nav_menus() {
 		register_nav_menus( array(
-			'primary_menu' => esc_html__( 'Primary Menu', 'themename' ),
+			'primary_menu' => esc_html__( 'Primary Menu', 'infoprag' ),
 		) );		
 	}
 
@@ -461,7 +440,7 @@ class StarterSite extends Timber\Site
 		#wpwrap #adminmenumain #adminmenu,
 		#wpwrap #adminmenumain #adminmenuback,
 		#wpwrap #adminmenumain #adminmenuwrap {
-			background-color: #1d2327;
+			background-color: #000;
 		}
 
 		#wpwrap #adminmenumain #adminmenu .wp-has-current-submenu .wp-submenu {
@@ -482,8 +461,8 @@ class StarterSite extends Timber\Site
 
 		#wpwrap #adminmenumain #adminmenuwrap #adminmenu li a:hover,
 		#wpwrap #adminmenumain #adminmenuwrap #adminmenu li a:focus {
-			color: #5B9A92;
-			box-shadow: inset 4px 0 0 0 #5B9A92;
+			color: #9DF500;
+			box-shadow: inset 4px 0 0 0 #9DF500;
 		}
 		#wpwrap #adminmenumain #adminmenuwrap #adminmenu li a:hover .wp-menu-image:before, 
 		#wpwrap #adminmenumain #adminmenuwrap #adminmenu li a:focus .wp-menu-image:before, 
@@ -491,43 +470,43 @@ class StarterSite extends Timber\Site
 		#wpwrap #adminmenumain #adminmenuwrap #adminmenu li.opensub a.menu-top .wp-menu-image:before, 
 		#collapse-button:hover,
 		#collapse-button:focus {
-			color: #5B9A92;
+			color: #9DF500;
 		}
 
 		#wpwrap #adminmenumain #adminmenuwrap #adminmenu li a.wp-has-current-submenu,
 		.wp-core-ui .button-primary {
-			background: #03554b;
+			background: #284379;
 			color: white !important;
 		}
 		.wp-core-ui .button-primary {
-			border-color: #03554b;
+			border-color: #284379;
 		}
 		.wp-core-ui .button {
-			color: #03554b;
-			border-color: #03554b;
+			color: #284379;
+			border-color: #284379;
 			transition: .3s;
 		}
 		.wp-core-ui .button:focus,
 		.wrap .page-title-action:focus {
-			box-shadow: 0 0 0 1px #fff, 0 0 0 3px #03554b;
+			box-shadow: 0 0 0 1px #fff, 0 0 0 3px #284379;
 		}
 		.wrap .page-title-action {
-			border: 1px solid #03554b;
-			color: #03554b;
+			border: 1px solid #284379;
+			color: #284379;
 			transition: .3s;
 		}
 
 		.wp-core-ui .button-primary:focus,
 		.wp-core-ui .button-primary:hover {
-			background: #012a25;
-			border-color: #012a25;
+			background: #0046d3;
+			border-color: #0046d3;
 		}
 		.wp-core-ui .button:focus,
 		.wp-core-ui .button:hover,
 		.wrap .page-title-action:focus,
 		.wrap .page-title-action:hover {
-			color: #012a25;
-			border-color: #012a25;
+			color: #0046d3;
+			border-color: #0046d3;
 		}
 
 	</style>
@@ -576,7 +555,7 @@ class StarterSite extends Timber\Site
 	{
 		echo '<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100..900&family=Lexend:wght@100..900&display=swap" rel="stylesheet">';
+		<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">';
 
 	}
 
