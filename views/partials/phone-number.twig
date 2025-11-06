@@ -7,7 +7,7 @@
 
 
 {# 1-800-555-5555 #}
-{% if phoneNumber|length == 10 %}
+{# {% if phoneNumber|length == 10 %}
   {% set areaCode = phoneNumber|slice(0, 3) %}
   {% set telephonePrefix = phoneNumber|slice(3, 3) %}
   {% set lineNumber = phoneNumber|slice(6, 4) %}
@@ -21,7 +21,7 @@
 {% else %}
   {{ phoneNumber }}
 {% endif %}
-{{ phone }}
+{{ phone }} #}
 
 {# 1.800.555.5555 #}
 {# {% if phoneNumber|length == 10 %}
@@ -41,7 +41,7 @@
 {{ phone }} #}
 
 {# 1 (800) 555-5555 #}
-{# {% if phoneNumber|length == 10 %}
+{% if phoneNumber|length == 10 %}
   {% set areaCode = phoneNumber|slice(0, 3) %}
   {% set telephonePrefix = phoneNumber|slice(3, 3) %}
   {% set lineNumber = phoneNumber|slice(6, 4) %}
@@ -55,4 +55,4 @@
 {% else %}
   {{ phoneNumber }}
 {% endif %}
-{{ phone }} #}
+{{ phone }}

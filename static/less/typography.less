@@ -5,44 +5,70 @@
     Usage: .font-size(48,28);
 */
 
-.font-size(@maxsize, @minsize){    
-    font-size: ~"calc(@{minsize}px + ( @{maxsize} - @{minsize} ) * ((100vw - 370px) / (1640 - 370)))";  
-    @media @min1920{
-        font-size: ~"@{maxsize}px";
+.font-size(@maxsize, @minsize) {
+    font-size:~"calc(@{minsize}px + ( @{maxsize} - @{minsize} ) * ((100vw - 370px) / (1640 - 370)))";
+
+    @media @min1920 {
+        font-size:~"@{maxsize}px";
     }
 }
 
 
-.h1,.h2,.h3,.h4,.h5,.h6, h1, h2, h3, h4, h5, h6 {
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--font-primary);
     color: var(--pri-100);
-    .font-size(118,56);
+    .font-size(118, 56);
     line-height: var(--heading-line-height);
     font-weight: 500;
 }
 
-.h2, h2 {
-    .font-size(64,40);
+.h2,
+h2 {
+    .font-size(64, 40);
     font-weight: 500;
 }
 
 
-.h3, h3 {
-   .font-size(32,24);
-   font-weight: 400;
+.h3,
+h3 {
+    .font-size(32, 24);
+    font-weight: 400;
 }
 
-.h4, h4 {
+.h4,
+h4 {
     .font-size(24, 20);
     font-weight: 400;
 }
 
-.h5,.h6, h5, h6 {
+.h5,
+.h6,
+h5,
+h6 {
     .font-size(20, 16);
     font-weight: 400;
 }
 
-p,li,a,td,span, legend, label, .wpcf7-response-output {
+p,
+li,
+a,
+td,
+span,
+legend,
+label,
+.wpcf7-response-output,
+div {
     font-family: var(--font-primary);
     color: var(--neu-100);
     line-height: var(--body-line-height);
@@ -50,17 +76,33 @@ p,li,a,td,span, legend, label, .wpcf7-response-output {
     .font-size(20, 16);
 }
 
-a, button, .wp-block-button__link {
+a,
+button,
+.wp-block-button__link {
     transition: all .3s ease;
     text-decoration: none;
+
     &:hover {
-       text-decoration: underline;
+        text-decoration: underline;
     }
 }
 
-[data-aos= "fadeIn"]{
-    opacity: 0;  
+[data-aos="fadeIn"] {
+    opacity: 0;
 }
-&.aos-animate{
+
+&.aos-animate {
     opacity: 1;
+}
+
+
+.white {
+    color: var(--white);
+}
+
+.title-bg {
+    display: inline-block;
+    padding: 16px 224px 16px 24px;
+    border-radius: 50px;
+    background-image: linear-gradient(90deg, rgba(0, 71, 212, 0.15) -17.12%, rgba(48, 81, 146, 0.00) 74.65%);
 }

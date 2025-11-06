@@ -187,7 +187,7 @@ class StarterSite extends Timber\Site
 		echo '
 			<style type="text/css">
 				.login #login h1 a {
-					background-image: url(' . get_stylesheet_directory_uri() . '/static/images/logo/infoprag_logo.jpg);
+					background-image: url(' . get_stylesheet_directory_uri() . '/static/images/logo/infoprag_logo.png);
 					background-size: contain;
 				background-position: center;
 					width: 100%;
@@ -300,7 +300,7 @@ class StarterSite extends Timber\Site
 		}
 		#wpadminbar #wp-toolbar #wp-admin-bar-root-default #wp-admin-bar-wp-logo .ab-item .ab-icon:before {
 			display: block;
-			background-image: url(' . get_stylesheet_directory_uri() . '/static/images/logo/infoprag_logo.jpg);
+			background-image: url(' . get_stylesheet_directory_uri() . '/static/images/logo/infoprag_logo.png);
 			background-position: center;
 			background-size: contain;
 			background-repeat: no-repeat;

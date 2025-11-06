@@ -2,11 +2,5 @@
     {% set myEmail = options.email %}
     {% include 'partials/email.twig' %}
  #}
- 
-{{fn('do_shortcode','[email-obfuscate email="'~ myEmail ~'"]')}}
 
-{# email to change the displayed text instead of an email #}
-{# {{fn('do_shortcode','[email-obfuscate email="'~ person.email_address ~'" link_title = "'~ person.name ~'"]')}} #}
-
-{# email to add text on hover show as a tooltip #}
-{# {{fn('do_shortcode','[email-obfuscate email="'~ person.email_address ~'" link_title = "'~ person.name ~'" tag_title = "Click to email me"]')}}  #}
+<a href="mailto:{{myEmail}}" class="email" rel="noopener noreferrer" aria-label="email">{{myEmail}}</a>

@@ -1,21 +1,29 @@
-
 <div id="contact" class="contact">
-    <div class="contact-info">
-        <h1>Contact</h1>
-        <div class="logo">
-			<a class="site-logo" href="{{site.url}}" rel="home">
-            {# no source function as it not supported in footer #}
-				<img src="{{site.theme.link}}/static/images/no-vacancy-logo.svg" alt="No Vacancy Logo" class="img-responsive">
-			</a>
+	<div class="contact-info">
+		<p class="comapny-name white">{{options.company_name}}</p>
+		<p class="location white">{{options.location}}</p>
+		<p class="email white">Email:
+			<a href="mailto:{{options.email}}" class="email white" rel="noopener noreferrer" aria-label="email">{{options.email}}</a>
+		</p>
+		<p class="phone-number white">Phone:
+			<a href="tel:{{ options.phone_number }}" aria-label="Phone us at {{options.phone_number}}">{% set phoneNumber = options.phone_number %}{% include 'partials/phone-number.twig' %}</a>
+		</p>
+	</div>
+	<div class="details">
+		<nav id="site-navigation-footer" class="footer-menu" role="navigation">
+			{% include "menu.twig" with{'items':menu.get_items} %}
+		</nav>
+		<div class="copyright center">
+			<span class="copyright-text">&copy; InfoPrag
+				{{"now"|date('Y')}}.
+			</span>
+			<span class="site-by">Site by
+				<a href="https://onpoint.ca/" target="_blank" rel="noopener noreferrer" aria-label="link to PSone website">onPoint</a>
+			</span>
+			<span>
+				|
+				<a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" aria-label="Link to google terms">Google Terms</a>
+			</span>
 		</div>
-        <div class="details">
-        </div>
-    </div>
-    <div class="copyright center">
-        <span class="copyright-text">&copy; Company name {{"now"|date('Y')}}. </span>
-        <span class="site-by">Site by <a href="https://onpoint.ca/" target="_blank" rel="noopener noreferrer" aria-label="link to PSone website">onPoint</a></span>
-        <span> | <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" aria-label="Link to google terms">Google Terms</a></span>
-    </div>
+	</div>
 </div>
-
-
