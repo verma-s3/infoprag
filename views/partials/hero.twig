@@ -2,8 +2,8 @@
 
 {% if not fn('is_page',"7") %}
 	<div class="hero not-home">
-		{% set hero = field.meta('hero_section') %}
 		{% if fn('is_page',[12,14,16]) %}
+			{% set hero = field.meta('hero_section') %}
 			<div class="image-content">
 				<img class="img-responsive" src="{{Image(hero.image).src}}" alt="{{Image(hero.image).alt}}"/>
 				<div class="text-content">
@@ -16,14 +16,38 @@
 					{% endif %}
 				</div>
 			</div>
-
-			<p></p>
 		{% endif %}
 	</div>
 {% endif %}
 {# if the page is home page #}
 {% if fn('is_page',"7") %}
-	<div class="hero">
-		<img class="img-responsive" src="{{Image(field.meta('hero_banner')).src}}" alt="{{Image(field.meta('hero_banner')).alt}}"/>
+	<div class="hero hero-home">
+		{% set hero = field.meta('hero_slider') %}
+		<div class="hero-slider">
+			{% for hero in hero %}
+				{% set count = (count|default(0)) + 1 %}
+				<div class="hero-slide" data-title="0{{count}}">
+					<div class="image-content">
+						<img class="img-responsive" src="{{Image(hero.image).src}}" alt="{{Image(hero.image).alt}}"/>
+					</div>
+					<div class="text-content padding-lr">
+						<div class="container">
+							<div class="slider-content">
+								{% if hero.logo is not empty %}
+									<div class="logo">
+										{{ function('file_get_contents', Image(hero.logo).src) }}
+									</div>
+								{% endif %}
+								<h1 class="white title">{{hero.title}}</h1>
+								<div class="content white">{{hero.content}}</div>
+								<div class="btn">
+									<a href="{{hero.button.link}}" class="custom-btn" aria-label="{{hero.button.name}}">{{hero.button.name}}</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
 	</div>
 {% endif %}

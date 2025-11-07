@@ -1,10 +1,53 @@
 {% import './components/image.twig' as Image %}
 {% import './components/button.twig' as Button %}
-{% extends "base.twig" %} 
+{% extends "base.twig" %}
 
 {% block content %}
-    <section class="{{field.slug}}-page" id="{{field.slug}}-page">
+	<section class="{{field.slug}}-page" id="{{field.slug}}-page">
+		<div class="about-us padding-lr padding-top" id="about-us">
+			{% set page = field.meta('about_us') %}
+			<div class="container">
+				<div class="text-content">
+					<h2 class="h3 title">{{page.title}}</h2>
+					<div class="content">{{page.content}}</div>
+					<div class="btn">
+						<a href="{{page.button.link}}" class="custom-btn" aria-label="{{page.button.name}}">{{page.button.name}}</a>
+					</div>
+				</div>
+				<div class="image-content">
+					<img src="{{Image(page.image).src}}" alt="{{Image(page.image).alt}}" class="img-responsive">
+				</div>
+			</div>
+		</div>
 
-    </section>
+		<div class="our-services padding" id="our-services">
+			{% set page = field.meta('our_services') %}
+			<div class="container">
+				<div class="image-content">
+					<div class="list">
+						{% for list in page.list %}
+							<div class="list-item">
+								<div class="logo">
+									{{ function('file_get_contents', Image(list.logo).src) }}
+								</div>
+								<h3 class="list-title h5 service-title">{{list.name}}</h3>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="text-content">
+					<h2 class="h3 title">{{page.title}}</h2>
+					<div class="content">{{page.content}}</div>
+					<div class="btn">
+						<a href="/services-approach/#our-services" class="custom-btn" aria-label="Our Services">Explore Services</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="condo-manage padding" id="condo-manage"></div>
+
+	</section>
 
 {% endblock %}

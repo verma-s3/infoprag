@@ -697,16 +697,319 @@ header {
             width: 100%;
         }
     }
+
+    //home page gero section::after
+    &.hero-home {
+        .hero-slider {
+            .hero-slide {
+                position: relative;
+
+                @media @min992 {
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        inset: 0;
+                        width: 100%;
+                        display: block;
+                        .grad-bg();
+                        z-index: 2;
+                    }
+                }
+
+                .image-content {
+                    img {
+                        height: calc(100svh - 100.15px);
+                        max-height: 820px;
+                        object-fit: cover;
+                        object-position: left center;
+                        filter: brightness(0.4);
+
+                        @media @min1280 {
+                            height: calc(100vh - 112px);
+                        }
+                    }
+                }
+
+                &:nth-child(1) {
+                    .text-content .btn a {
+                        color: var(--white);
+                        border-color: var(--white);
+                        background: rgba(255, 255, 255, 0.45);
+                    }
+                }
+
+                &:nth-child(2) {
+                    .text-content .btn a {
+                        .grad-btn();
+                    }
+                }
+
+                .text-content {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: 100%;
+                    left: 0;
+                    z-index: 10;
+
+                    .container {
+                        .slider-content {
+                            .logo {
+                                margin-bottom: var(--space-md);
+
+                                svg {
+                                    >path {
+                                        fill: var(--white);
+                                    }
+                                }
+                            }
+
+                            .content {
+                                margin-top: var(--space-sm);
+                            }
+
+                            .btn {
+                                margin-top: var(--space-24);
+                            }
+
+                            @media @min1024 {
+                                width: 950px;
+
+                                .content {
+                                    width: 650px;
+                                }
+
+
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            .slick-dots {
+                bottom: var(--space-md);
+                .display-flex(flex, 212px, row, center);
+                justify-content: center;
+                transition: all .35s ease-in-out;
+
+                @media @min992 {
+                    bottom: var(--space-lg);
+                    gap: 352px;
+                }
+
+                li {
+                    height: unset;
+                    width: unset;
+                    margin: 0px;
+                    transition: all .35s ease-in-out;
+
+                    .tab {
+                        color: var(--white);
+                        font-size: 32px;
+                        font-weight: 400;
+                        height: unset;
+                        width: unset;
+                        padding: 0 !important;
+                        transition: all .35s ease-in-out;
+
+                        &:hover {
+                            text-decoration: none !important;
+                            color: var(--pri-400);
+
+                            &::before {
+                                opacity: .25 !important;
+                            }
+                        }
+
+                        &::before {
+                            content: '';
+                            height: 8px;
+                            width: 160px;
+                            display: block;
+                            background-color: rgba(255, 255, 255, 0.45);
+                            border-radius: 50px;
+                            top: 2px;
+                            transition: all .35s ease-in-out;
+                        }
+                    }
+
+                    &.slick-active {
+                        pointer-events: none;
+
+                        .tab {
+                            &::before {
+                                background: linear-gradient(90deg, #95B6F8 3.85%, #C9DAFC 54.81%, #FFF 100%);
+                            }
+                        }
+                    }
+
+                    &:nth-of-type(1) {
+                        .tab {
+                            &::before {
+                                left: 64px;
+                            }
+                        }
+                    }
+
+                    &:nth-of-type(2) {
+                        .tab {
+                            &::before {
+                                right: 64px;
+                                left: unset;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 
 /**********************************
 * HOME PAGE
 ***********************************/
+.home-page {
+
+
+
+    .our-services,
+    .about-us {
+        position: relative;
+        z-index: 1;
+
+        @media @min992 {
+            &::before {
+                content: '';
+                position: absolute;
+                display: block;
+                width: 100%;
+                height: 100%;
+                mix-blend-mode: overlay;
+                z-index: 0;
+                pointer-events: none;
+                top: 50%;
+                transform: translateY(-50%);
+                background-size: 50%;
+                background-repeat: no-repeat;
+            }
+        }
+
+
+        .container {
+            .container-section();
+            position: relative;
+            z-index: 10;
+
+            @media @min1280 {
+                gap: var(--space-lg);
+            }
+
+            @media @min1640 {
+                gap: var(--space-xxl);
+            }
+
+            .text-content {
+                .content {
+                    max-width: 650px;
+                }
+            }
+        }
+    }
+
+    .our-services {
+        &::before {
+            background-image: url('@{images}/contact-pattern-left.svg');
+            left: 0;
+            background-position: left center;
+        }
+    }
+
+
+    .about-us {
+        &::before {
+            background-image: url('@{images}/contact-pattern-right.svg');
+            right: 0;
+            background-position: right center;
+        }
+
+        @media @max992 {
+            .image-content {
+                order: -1;
+            }
+        }
+    }
+
+    .our-services {
+        .container {
+            .image-content {
+                // @media @min992 {
+                //     order: -1;
+                // }
+
+                .list {
+                    border-radius: 15px;
+                    box-shadow: 2px 2px 25px 0 rgba(48, 81, 146, 0.10);
+                    .grid(2);
+                    background-color: var(--white);
+
+                    .list-item {
+                        .display-flex(flex, var(--space-sm), column, center);
+                        justify-items: center;
+                        padding: 48px 8px;
+
+                        h3 {
+                            color: var(--neu-100);
+                            max-width: 170px;
+                            width: 100%;
+                            .center();
+                        }
+
+                        &:nth-of-type(1) {
+                            border-right: 1px solid var(--neu-400);
+                            border-bottom: 1px solid var(--neu-400);
+                        }
+
+                        &:nth-of-type(2) {
+                            border-bottom: 1px solid var(--neu-400);
+                        }
+
+                        &:nth-of-type(3) {
+                            border-right: 1px solid var(--neu-400);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 /**********************************
 * SERVICES AND APPROACH PAGE
 ***********************************/
+.services-approach-page {
+
+
+    .our-services,
+    .our-approach {
+        .container {
+            .container-section();
+        }
+    }
+
+    .our-approach {
+        background-color: var(--pri-400);
+
+        .container {
+            @media @min992 {
+                .image-content {
+                    order: -1;
+                }
+            }
+        }
+    }
+}
 
 /**********************************
 * SMART GREEN CONDO PAGE
@@ -733,13 +1036,13 @@ header {
     }
 
     &::before {
-        background: url('@{images}/contact-pattern-left.svg') no-repeat left;
+        background: url('@{images}/contact-pattern-left.svg') no-repeat left bottom;
         left: 0;
         bottom: 0;
     }
 
     &::after {
-        background: url('@{images}/contact-pattern-right.svg') no-repeat right;
+        background: url('@{images}/contact-pattern-right.svg') no-repeat right top;
         right: 0;
         top: 0;
     }
@@ -747,6 +1050,8 @@ header {
     .container {
         .grid(1);
         gap: 40px;
+        position: relative;
+        z-index: 10;
 
         @media @min992 {
             .grid(2);

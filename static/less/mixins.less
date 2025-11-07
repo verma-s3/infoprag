@@ -2,146 +2,150 @@
 // Max-widths
 // ========================================================================== //
 .width(@width) {
-  // example: 1920px
-  max-width: @width;
-  width: 100%;
+    // example: 1920px
+    max-width: @width;
+    width: 100%;
 }
 
 .width(@width, @margin) {
-  // example: 1920px
-  max-width: @width;
-  width: 100%;
-  margin-inline: @margin; //ex: auto
+    // example: 1920px
+    max-width: @width;
+    width: 100%;
+    margin-inline: @margin; //ex: auto
 }
 
 .container {
-  max-width: var(--content-width);
-  width: 100%;
-  margin-inline: auto;
+    max-width: var(--content-width);
+    width: 100%;
+    margin-inline: auto;
 }
 
 // ========================================================================== //
 // Grid
 // ========================================================================== //
 .grid {
-  display: grid;
+    display: grid;
 }
 
 .grid(1) {
-  display: grid;
-  grid-template-columns: 100%;
+    display: grid;
+    grid-template-columns: 100%;
 }
 
 .grid(@columns) {
-  display: grid;
-  grid-template-columns: repeat(@columns, minmax(0, 1fr));
+    display: grid;
+    grid-template-columns: repeat(@columns, minmax(0, 1fr));
 }
 
 // ========================================================================== //
 // paddings
 // ========================================================================== //
 .padding-lr {
-  padding-inline: 40px;
+    padding-inline: 16px;
 
-  @media @min1024 {
-    padding-inline: 80px;
-  }
+    @media @min768 {
+        padding-inline: 40px;
+    }
 
-  @media @min1640 {
-    padding-inline: 140px;
-  }
+    @media @min1024 {
+        padding-inline: 80px;
+    }
+
+    @media @min1640 {
+        padding-inline: 140px;
+    }
 }
 
 .padding-tb {
-  padding-block: 64px;
+    padding-block: 64px;
 
-  @media @min1024 {
-    padding-block: 100px;
-  }
+    @media @min1024 {
+        padding-block: 100px;
+    }
 
-  @media @min1640 {
-    padding-block: 140px;
-  }
+    @media @min1640 {
+        padding-block: 140px;
+    }
 }
 
 .padding-tb(@mobile, @desktop) {
-  padding-block: @mobile;
+    padding-block: @mobile;
 
-  @media @min1024 {
-    padding-block: @desktop;
-  }
+    @media @min1024 {
+        padding-block: @desktop;
+    }
 }
 
 .padding {
-  .padding-lr();
-  .padding-tb();
+    .padding-lr();
+    .padding-tb();
 }
 
 .padding-top {
-  padding-top: 64px;
+    padding-top: 64px;
 
-  @media @min1024 {
-    padding-top: 100px;
-  }
+    @media @min1024 {
+        padding-top: 100px;
+    }
 
-  @media @min1640 {
-    padding-top: 140px;
-  }
+    @media @min1640 {
+        padding-top: 140px;
+    }
 }
 
 // ========================================================================== //
 // margins
 // ========================================================================== //
 .margin-lr {
-  margin-inline: var(--space-xs);
+    margin-inline: var(--space-xs);
 
-  @media @min768 {
-    margin-inline: var(--space-sm);
-  }
+    @media @min768 {
+        margin-inline: var(--space-sm);
+    }
 
-  @media @min1024 {
-    margin-inline: var(--space-md)
-  }
+    @media @min1024 {
+        margin-inline: var(--space-md)
+    }
 }
 
 .margin-tb {
-  margin-block: 30px;
+    margin-block: 30px;
 
-  @media @min768 {
-    margin-block: 50px;
-  }
+    @media @min768 {
+        margin-block: 50px;
+    }
 
-  @media @min1024 {
-    margin-block: 100px;
-  }
+    @media @min1024 {
+        margin-block: 100px;
+    }
 
-  @media @min1640 {
-    margin-block: 140px;
-  }
+    @media @min1640 {
+        margin-block: 140px;
+    }
 }
 
 // ========================================================================== //
 // Flex
 // ========================================================================== //
 .display-flex(@flex, @gap, @dir, @align) {
-  display: @flex;
-  gap: @gap;
-  flex-direction: @dir;
-  align-items: @align;
+    display: @flex;
+    gap: @gap;
+    flex-direction: @dir;
+    align-items: @align;
 }
 
 // ========================================================================== //
 // Grid
 // ========================================================================== //
 .display-2-1(@gap, @row-gap) {
-  display: grid;
-  .grid(1);
-  row-gap: @row-gap;
+    display: grid;
+    .grid(1);
+    row-gap: @row-gap;
 
-  @media @min1024 {
-    .grid(2);
-    gap: @gap;
-  }
+    @media @min1024 {
+        .grid(2);
+        gap: @gap;
+    }
 }
 
 // ========================================================================== //
@@ -149,36 +153,36 @@
 // ========================================================================== //
 
 .menu-alignment {
-  display: flex;
-  gap: calc(2.5 * var(--space-unit));
-  align-items: center;
+    display: flex;
+    gap: calc(2.5 * var(--space-unit));
+    align-items: center;
     gap: calc(2.5 * var(--space-unit));
 }
 
 .transition {
-  transition: all .35s ease;
+    transition: all .35s ease;
 }
 
 // svg dimentions
 .s-48 {
-  height: 48px;
-  width: 48px;
+    height: 48px;
+    width: 48px;
 }
 
 .content {
-  p:not(:first-child) {
-    margin-top: var(--space-sm);
+    p:not(:first-child) {
+        margin-top: var(--space-sm);
 
-    @media @min992 {
-      margin-top: var(--space-24);
+        @media @min992 {
+            margin-top: var(--space-24);
+        }
     }
-  }
 }
 
 .content-center {
-  @media @min768 {
-    .center();
-  }
+    @media @min768 {
+        .center();
+    }
 }
 
 // // for gradient
@@ -199,3 +203,67 @@
 //     z-index: 1;
 //   }
 // }
+
+.container-section {
+    .grid(1);
+    gap: var(--space-40);
+
+    @media @min992 {
+        .grid(2);
+        align-items: center;
+    }
+
+    .image-content {
+        img {
+            border-radius: 10px;
+        }
+    }
+
+    .text-content {
+        h2 {
+            .title-bg();
+
+        }
+
+        .list,
+        .content,
+        .btn {
+            margin-top: var(--space-24);
+
+            @media @min768 {
+                margin-top: var(--space-40);
+            }
+
+            @media @min1024 {
+                margin-top: var(--space-lg);
+            }
+
+            .list-item {
+                h3 {
+                    padding-bottom: var(--space-24);
+                    margin-bottom: var(--space-24);
+                    border-bottom: 1px solid var(--neu-200);
+                    color: var(--neu-200);
+                    cursor: pointer;
+                    transition: all .35s ease;
+
+                    &:hover {
+                        color: var(--pri-100);
+                        border-color: var(--pri-100);
+                    }
+                }
+
+                .list-content {
+                    padding-bottom: var(--space-24);
+                }
+
+                .is-active {
+                    color: var(--pri-100);
+                    border-color: var(--pri-100);
+                    pointer-events: none;
+
+                }
+            }
+        }
+    }
+}

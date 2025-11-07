@@ -1,29 +1,29 @@
-jQuery(document).ready(function($) {
+jQuery(document).ready(function ($) {
   // fixedHeaderOnScroll();
-  $('#toggle').click(function() {
+  $('#toggle').click(function () {
     $(this).toggleClass('active');
     $('#overlay').toggleClass('open');
     $('html').toggleClass('hidden');
     // if ($('header').hasClass('fixed-header')) {
     //   $('header').toggleClass('overlay-header');
     // }
-   });
+  });
 
- 
-    // Closes overlay menu after clicking on the menu link
-    $('#site-navigation3 ul li a').on("click", function (e) {
-        $('#toggle').click();
-    });
-         
-    // AOS.init({
-    //   startEvent: 'DOMContentLoaded',
-    //   duration: 1000,
-    //   easing: 'ease-in-quad',
-    //   disable: 'mobile',
-    //   once: true
-    // });
-  
-    // AOS.refresh();
+
+  // Closes overlay menu after clicking on the menu link
+  $('#site-navigation3 ul li a').on("click", function (e) {
+    $('#toggle').click();
+  });
+
+  // AOS.init({
+  //   startEvent: 'DOMContentLoaded',
+  //   duration: 1000,
+  //   easing: 'ease-in-quad',
+  //   disable: 'mobile',
+  //   once: true
+  // });
+
+  // AOS.refresh();
 
   //     AOS.init({
   //   startEvent: 'DOMContentLoaded',
@@ -51,7 +51,7 @@ jQuery(document).ready(function($) {
   //   history.scrollRestoration = 'manual';
   // }
 
-   
+
   // //*** Smooth Scroll ***
   window.addEventListener('load', function () {
     const hash = window.location.hash;
@@ -76,8 +76,8 @@ jQuery(document).ready(function($) {
       }
     });
   });
-  
-  
+
+
   //*** Fixed header ***
   // function fixedHeaderOnScroll(){
   //   // var heroHeight = window.innerHeight; //use me if want to display fixed header according to innerHeight.
@@ -88,16 +88,16 @@ jQuery(document).ready(function($) {
   //       $('header').removeClass('fixed-header');   // Else fade out the arrow
   //   }
   // }
-  
+
   /************************************************
   uncomment follwoing code if window.innerheight is
   included in fixedHeaderOnScroll function.  
-  *************************************************/ 
+  *************************************************/
 
   // $(window).on('load scroll resize', function () {
   //   fixedHeaderOnScroll();
   // });
-  
+
   // $(window).on('load', function () {
   //   fixedHeaderOnScroll();
   // });
@@ -113,22 +113,22 @@ jQuery(document).ready(function($) {
 
 
   //*** Scroll to Top *** use with less *** use with html ***
-    // $(window).scroll(function() {
-    //     if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
-    //         $('#return-to-top').fadeIn(200);    // Fade in the arrow
-    //     } else {
-    //         $('#return-to-top').fadeOut(200);   // Else fade out the arrow
-    //     }
-    // });
-  
-    // $('#return-to-top').click(function() {      // When arrow is clicked
-    //     $('body,html').animate({
-    //         scrollTop : 0                       // Scroll to top of body
-    //     }, 500);
-    // });//End Scroll to Top
-  
+  // $(window).scroll(function() {
+  //     if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+  //         $('#return-to-top').fadeIn(200);    // Fade in the arrow
+  //     } else {
+  //         $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+  //     }
+  // });
 
-  
+  // $('#return-to-top').click(function() {      // When arrow is clicked
+  //     $('body,html').animate({
+  //         scrollTop : 0                       // Scroll to top of body
+  //     }, 500);
+  // });//End Scroll to Top
+
+
+
   //*** Flexslider ***
   // var $flexslider = $('.flex-slider');
   // $flexslider.flexslider({
@@ -145,49 +145,43 @@ jQuery(document).ready(function($) {
 
 
   //Slick SLider
-  // $('.slider').slick({
-  //   dots: false,
-  //   centerMode: true,
-  //   infinite: true,
-  //   arrows: true,
-  //   slidesToShow: 4.67,
-  //   responsive: [
-  //     {
-  //       breakpoint: 1500,
-  //       settings: {
-  //         slidesToShow: 3,
-  //         slidesToScroll: 3,
-  //         infinite: true,
-  //       }
-  //     },
-  //     {
-  //       breakpoint: 1024,
-  //       settings: {
-  //         slidesToShow: 2,
-  //         slidesToScroll: 2,
-  //         infinite: true,
-  //       }
-  //     },
-  //     {
-  //       breakpoint: 600,
-  //       settings: {
-  //         slidesToShow: 2,
-  //         slidesToScroll: 2
-  //       }
-  //     },
-  //     {
-  //       breakpoint: 480,
-  //       settings: {
-  //         slidesToShow: 1,
-  //         slidesToScroll: 1
-  //       }
-  //     }
-  //     // You can unslick at a given breakpoint now by adding:
-  //     // settings: "unslick"
-  //     // instead of a settings object
-  //   ]
-  // });
+  $('.hero-slider').slick({
+    dots: true,
+    centerMode: false,
+    infinite: false,
+    arrows: false,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    customPaging: function (slider, i) {
+      return '<button class="tab">' + $(slider.$slides[i]).data('title') + '<span class="slide-btn"></span></button>';
+    },
+  });
 
-  
+  function faq($title, $content, $section) {
+    $($content).hide();
+    $(`${$section} .container .text-content .list .list-item`).first().find($content).show();
+    $($title).click(function () {
+      var $thisItem = $(this).closest('.list-item');
+      // Close all other items
+      $thisItem
+        .siblings('.list-item')
+        .find($content)
+        .slideUp();
+      $thisItem
+        .siblings('.list-item')
+        .find($title)
+        .removeClass('is-active');
+
+      // Toggle this item
+      $(this)
+        .toggleClass('is-active')
+        .next($content)
+        .slideToggle('ease-out');
+    });
+  }
+  faq('.service-title', '.service-content', '.our-services');
+  faq('.approach-title', '.approach-content', '.our-approach');
+
 });
-  
