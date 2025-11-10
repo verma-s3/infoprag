@@ -249,6 +249,7 @@ body {
 
 .overlay {
     position: fixed;
+    background-color: var(--white);
     background-image: linear-gradient(0deg, rgba(0, 71, 212, 0.15) -17.12%, rgba(48, 81, 146, 0.00) 74.65%);
     top: 0;
     left: 0;
@@ -735,6 +736,11 @@ header {
                         color: var(--white);
                         border-color: var(--white);
                         background: rgba(255, 255, 255, 0.45);
+
+                        &:hover {
+                            background-color: var(--pri-100);
+                            border-color: var(--pri-100);
+                        }
                     }
                 }
 
@@ -872,8 +878,6 @@ header {
 ***********************************/
 .home-page {
 
-
-
     .our-services,
     .about-us {
         position: relative;
@@ -982,6 +986,156 @@ header {
                 }
             }
         }
+    }
+
+    .condo-manage {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .container {
+            .container-section();
+            position: relative;
+            z-index: 10;
+
+            @media @min1280 {
+                gap: var(--space-lg);
+            }
+
+            @media @min1640 {
+                gap: var(--space-xxl);
+            }
+
+            .text-content {
+                h2 {
+                    background-image: none;
+                    padding: 0px;
+                }
+
+                p {
+                    .white();
+                }
+
+                .content,
+                .btn {
+                    @media @min1024 {
+                        margin-top: var(--space-40);
+                    }
+                }
+
+                .btn a {
+                    color: var(--white);
+                    border-color: var(--white);
+                    background: rgba(255, 255, 255, 0.45);
+
+                    &:hover {
+                        background-color: var(--pri-100);
+                        border-color: var(--pri-100);
+                    }
+                }
+
+                @media @min992 {
+                    order: -1;
+
+                    .content {
+                        max-width: 550px;
+                        width: 100%;
+                        display: block;
+                    }
+                }
+            }
+
+            .image-content {
+                justify-self: center;
+
+                .logo {
+                    svg {
+                        max-width: 338px;
+                        width: 100%;
+                        display: block;
+                        height: auto;
+
+                        >path {
+                            fill: var(--white);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .info-approach {
+        position: relative;
+        z-index: 1;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            z-index: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            transform: translateY(-50%);
+            background-image: url('@{images}/full-pattern.svg');
+            background-position: left center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+
+        .container {
+            max-width: 1440px;
+
+            @media @min1024 {
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .text-content {
+                display: inline-block;
+                background-color: var(--white);
+                border-radius: 15px;
+                box-shadow: 2px 2px 25px 0 rgba(48, 81, 146, 0.10);
+                padding: var(--space-md);
+
+                h2 {
+                    .title-bg();
+
+                }
+
+                .content,
+                .btn {
+                    margin-top: var(--space-24);
+
+                    @media @min768 {
+                        margin-top: var(--space-40);
+                    }
+                }
+
+                @media @min992 {
+                    .content {
+                        max-width: 550px;
+                        width: 100%;
+                        display: block;
+                    }
+                }
+            }
+        }
+
     }
 }
 

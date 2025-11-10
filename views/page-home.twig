@@ -46,7 +46,36 @@
 			</div>
 		</div>
 
-		<div class="condo-manage padding" id="condo-manage"></div>
+		<div class="condo-manage padding" id="condo-manage" style="background-image: url({{Image(field.meta('condo_management').background_image).src}})">
+			{% set page = field.meta('condo_management') %}
+			<div class="container">
+				<div class="image-content">
+					<div class="logo">
+						{{ function('file_get_contents', Image(page.logo).src) }}
+					</div>
+				</div>
+				<div class="text-content">
+					<h2 class="white title">{{page.title}}</h2>
+					<div class="content white">{{page.content}}</div>
+					<div class="btn">
+						<a href="{{page.button.link}}" class="custom-btn" aria-label="{{page.button.name}}">{{page.button.name}}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="info-approach padding" id="info-approach">
+			{% set page = field.meta('infoprag_approach') %}
+			<div class="container">
+				<div class="text-content">
+					<h2 class="h3 title">{{page.title}}</h2>
+					<div class="content">{{page.content}}</div>
+					<div class="btn">
+						<a href="/services-approach/#our-approach" class="custom-btn" aria-label="Our Services">Explore Services</a>
+					</div>
+				</div>
+			</div>
+		</div>
 
 	</section>
 
