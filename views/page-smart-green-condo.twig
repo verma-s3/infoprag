@@ -1,10 +1,105 @@
 {% import './components/image.twig' as Image %}
 {% import './components/button.twig' as Button %}
-{% extends "base.twig" %} 
+{% extends "base.twig" %}
 
 {% block content %}
-    <section class="{{field.slug}}-page" id="{{field.slug}}-page">
+	<section class="{{field.slug}}-page" id="{{field.slug}}-page">
 
-    </section>
+		<div class="our-vision padding" id="our-vision">
+			{% set page = field.meta('our_vision') %}
+			<div class="container">
+				<div class="text-content">
+					<h2 class="h3 title">{{page.title}}</h2>
+					<div class="list">
+						{% for list in page.list %}
+							{% set count = (count | default(0)) + 1 %}
+							<div class="list-item">
+								<span>{{count}}</span>
+								<div class="list-content">
+									<h3 class="list-title">{{list.title}}</h3>
+									<div class="content">{{list.content}}</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="image-content">
+					<img src="{{Image(page.image).src}}" alt="{{Image(page.image).alt}}" class="img-responsive">
+				</div>
+			</div>
+		</div>
+
+		<div class="condo-management padding-lr padding-top" id="condo-management">
+			{% set page = field.meta('condo_management') %}
+			<div class="container">
+				<h2 class="h3 title">{{page.title}}</h2>
+				<div class="text-content">
+					<div class="list">
+						{% for list in page.list %}
+							<div class="list-item">
+								<img src="{{Image(list.image).src}}" alt="{{Image(list.image).alt}}" class="img-responsive">
+								<div class="list-details">
+									<h3 class="list-title center">{{list.title}}</h3>
+									<div class="list-content content">{{list.content}}</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="core-functionality padding" id="core-functionality">
+			{% set page = field.meta('core_platform') %}
+			<div class="container">
+				<h2 class="h3 title">{{page.title}}</h2>
+				<div class="text-content">
+					<div class="list">
+						{% for faq in page.list %}
+							<div class="list-item">
+								<h3 class="faq-title">
+									{{ function('file_get_contents', Image(faq.logo).src) }}
+									{{faq.title}}
+								</h3>
+								<div class="faq-content">
+									<p>{{faq.content}}</p>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="demo-videos padding" id="demo-videos">
+			{% set page = field.meta('demos') %}
+			<div class="container">
+				<h2 class="h3 title">{{page.title}}</h2>
+				<div class="videos" id="videos">
+					{% for item in page.list %}
+						<div class="list-item">
+							<div class="you_video">{{item.you_video}}</div>
+							<h3 class="video-title">{{item.title}}</h3>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="request-a-demo padding-lr" id="request-a-demo">
+			{% set page = field.meta('request_demo') %}
+			<div class="container">
+				<div class="image-content">
+					<img src="{{Image(page.image).src}}" alt="{{Image(page.image).alt}}" class="img-responsive">
+				</div>
+				<div class="text-content padding-tb">
+					<h2 class="h3 title">{{page.title}}</h2>
+					<div class="content">{{page.content}}</div>
+					<div class="form-container">
+						{{fn('do_shortcode','[gravityform id="2" title="false" description="false" ajax="true"]')}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 {% endblock %}

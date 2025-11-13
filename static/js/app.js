@@ -162,6 +162,7 @@ jQuery(document).ready(function ($) {
   function faq($title, $content, $section) {
     $($content).hide();
     $(`${$section} .container .text-content .list .list-item`).first().find($content).show();
+    $(`${$section} .container .text-content .list .list-item`).first().find($title).addClass('default-active is-active');
     $($title).click(function () {
       var $thisItem = $(this).closest('.list-item');
       // Close all other items
@@ -172,7 +173,7 @@ jQuery(document).ready(function ($) {
       $thisItem
         .siblings('.list-item')
         .find($title)
-        .removeClass('is-active');
+        .removeClass('is-active default-active');
 
       // Toggle this item
       $(this)
@@ -183,5 +184,6 @@ jQuery(document).ready(function ($) {
   }
   faq('.service-title', '.service-content', '.our-services');
   faq('.approach-title', '.approach-content', '.our-approach');
+  faq('.faq-title', '.faq-content', '.core-functionality');
 
 });

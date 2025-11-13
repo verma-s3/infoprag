@@ -386,6 +386,17 @@ body {
     display: none !important;
 }
 
+.gform_submission_error {
+    background-image: none !important;
+    padding: 0px !important;
+}
+
+.gform_confirmation_message {
+    font-size: 20px;
+    color: var(--pri-100);
+    font-weight: 500;
+}
+
 form {
     .gform_fields {
         grid-row-gap: var(--space-24);
@@ -440,18 +451,11 @@ form {
         color: var(--black);
 
         &:invalid,
-        .gf_placeholder {
-            color: grey !important;
+        .gf_placeholder,
+        &:has(option.gf_placeholder:checked) {
+            color: var(--neu-300) !important;
             /* initial placeholder color */
         }
-
-        &:valid {
-            color: black;
-            /* selected option color */
-        }
-
-
-
     }
 
     .gform_footer {
@@ -1106,11 +1110,15 @@ header {
             }
 
             .text-content {
-                display: inline-block;
+                display: block;
                 background-color: var(--white);
                 border-radius: 15px;
                 box-shadow: 2px 2px 25px 0 rgba(48, 81, 146, 0.10);
                 padding: var(--space-md);
+
+                @media @min768 {
+                    display: inline-block;
+                }
 
                 h2 {
                     .title-bg();
@@ -1168,6 +1176,255 @@ header {
 /**********************************
 * SMART GREEN CONDO PAGE
 ***********************************/
+.smartgreencondo-page {
+    .container {
+        h2 {
+            .title-bg();
+        }
+    }
+
+    .our-vision {
+        background-color: var(--pri-400);
+
+        .container {
+            .grid(1);
+            gap: var(--space-40);
+
+            @media @min992 {
+                .grid(2);
+                align-items: center;
+            }
+
+            .image-content {
+                img {
+                    border-radius: 10px;
+                }
+            }
+
+            .text-content {
+                .list {
+                    margin-top: var(--space-40);
+                    .display-flex(flex, var(--space-md), column, center);
+
+                    @media @min768 {
+                        margin-top: var(--space-lg);
+                    }
+
+                    .list-item {
+                        .display-flex(flex, var(--space-sm), row, unset);
+
+                        @media @min992 {
+                            gap: var(--space-md);
+                        }
+
+                        span {
+                            height: 32px;
+                            width: 100%;
+                            max-width: 32px;
+                            background-color: var(--white);
+                            border-radius: 50%;
+                            color: var(--pri-100);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            .font-size(32, 24);
+
+                            @media @min992 {
+                                height: 56px;
+                                max-width: 56px;
+                            }
+                        }
+
+                        .content {
+                            max-width: 550px;
+                            width: 100%;
+                            padding-top: var(--space-xs);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .condo-management {
+        .container {
+            .text-content {
+                .list {
+                    height: 100%;
+                    .grid(1);
+                    gap: var(--space-40);
+
+                    margin-top: var(--space-40);
+
+                    @media @min768 {
+                        .grid(2);
+                        margin-top: var(--space-lg);
+                    }
+
+                    @media @min1024 {
+                        .grid(3);
+                    }
+
+                    .list-item {
+                        height: 100%;
+                        border-radius: 10px;
+                        overflow: hidden;
+
+                        .list-details {
+                            background-color: var(--pri-400);
+                            padding: 20px;
+                            height: 100%;
+                            padding-bottom: var(--space-md);
+
+                            h3 {
+                                padding-bottom: var(--space-xs);
+                            }
+
+                            @media @min992 {
+                                padding-bottom: var(--space-lg);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .core-functionality {
+        .container {
+            .text-content {
+                margin-top: var(--space-40);
+
+                @media @min768 {
+                    margin-top: var(--space-lg);
+                }
+
+                .list {
+                    .list-item {
+                        &:nth-of-type(1) h3.default-active {
+                            pointer-events: none;
+                            color: var(--pri-100);
+                            border-color: var(--pri-100);
+
+                            svg path {
+                                fill: url(#gradient-fill);
+                            }
+                        }
+
+                        h3 {
+                            padding-block: var(--space-sm);
+                            border-bottom: 1px solid var(--neu-300);
+                            .display-flex(flex, var(--space-sm), row, center);
+                            color: var(--neu-200);
+                            cursor: pointer;
+
+                            svg {
+                                transition: all .35s ease;
+
+                                path {
+                                    fill: var(--neu-200);
+                                    transition: all .35s ease;
+                                }
+                            }
+
+                            &.is-active {
+                                pointer-events: none;
+                                color: var(--pri-100);
+                                border-color: var(--pri-100);
+
+                                svg {
+                                    path {
+                                        fill: url(#gradient-fill);
+                                    }
+                                }
+                            }
+
+                        }
+
+                        .faq-content {
+                            padding-top: var(--space-sm);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .demo-videos {
+        background-color: var(--pri-400);
+
+        .container {
+            .videos {
+                .grid(1);
+                gap: var(--space-40);
+
+                margin-top: var(--space-40);
+
+                @media @min768 {
+                    .grid(2);
+                    gap: var(--space-56);
+                    margin-top: var(--space-lg);
+                }
+
+                @media @min1024 {
+                    .grid(3);
+                }
+
+                .list-item {
+                    .video-title {
+                        .h5();
+                        font-weight: 300;
+                        line-height: var(--section-line-height);
+                        margin-top: var(--space-sm);
+                    }
+
+                    iframe {
+                        .img-responsive();
+                        aspect-ratio: 16/9;
+                        object-fit: cover;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    .request-a-demo {
+        @media @min992 {
+            padding-left: 0px !important;
+        }
+
+        .container {
+            .container-section();
+
+            .image-content {
+                height: 100%;
+                display: block;
+                overflow: hidden;
+
+                img {
+                    border-radius: 0px;
+
+                    @media @min992 {
+                        height: 100%;
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                }
+            }
+
+            .gfield_description.instruction {
+                display: none;
+            }
+
+            .gform_wrapper.gravity-theme .gfield {
+                @media @min992 {
+                    grid-column: span 6;
+                }
+            }
+        }
+    }
+}
 
 /**********************************
 * CONTACT PAGE

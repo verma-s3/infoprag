@@ -7,4 +7,9 @@
 <rect width="40" height="40" fill="white"/>
 </clipPath>
 </defs>
+<linearGradient id="gradient-fill" x1="20.7288" y1="24.7324" x2="17.4373" y2="0.30632" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0046D3"/>
+<stop offset="0.519231" stop-color="#65B878"/>
+<stop offset="1" stop-color="#9DF500"/>
+</linearGradient>
 </svg>
