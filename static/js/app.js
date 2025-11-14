@@ -154,10 +154,15 @@ jQuery(document).ready(function ($) {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 5000,
+    speed: 500,
+    fade: true,
+    cssEase: 'ease',
     customPaging: function (slider, i) {
       return '<button class="tab">' + $(slider.$slides[i]).data('title') + '<span class="slide-btn"></span></button>';
     },
   });
+
+
 
   function faq($title, $content, $section) {
     $($content).hide();
@@ -185,5 +190,24 @@ jQuery(document).ready(function ($) {
   faq('.service-title', '.service-content', '.our-services');
   faq('.approach-title', '.approach-content', '.our-approach');
   faq('.faq-title', '.faq-content', '.core-functionality');
+
+  $('.content-slider').slick({
+    dots: true,
+    infinite: false,
+    adaptiveHeight: true,
+    speed: 500,
+    prevArrow: $('.arrowPrev'),
+    nextArrow: $('.arrowNext'),
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    vertical: true,
+    focusOnSelect: true,
+  });
+  // On slide change, update active segment in the circle
+  $('.content-slider').on('afterChange', function (event, slick, currentSlide) {
+    let segment = $(slick.$slides[currentSlide]).data('segment');
+    console.log(segment);
+    $('#sgcMainCircle').attr('src', `/path/to/circle-segment-${segment}.svg`);
+  });
 
 });
