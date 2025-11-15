@@ -8,17 +8,18 @@
 			{% set page = field.meta('our_services') %}
 			<div class="container">
 				<div class="text-content">
-					<h2 class="h3 title">{{page.title}}</h2>
+					<h2 class="h3 title" data-aos="fadeIn">{{page.title}}</h2>
 					<div class="list">
 						{% for list in page.list %}
-							<div class="list-item">
+							{% set delay = (delay|default(100)) + 100 %}
+							<div class="list-item" data-aos="fade-up" data-aos-delay="{{delay}}">
 								<h3 class="list-title service-title {% if loop.index == 1 %}is-active{% endif %}">{{list.title}}</h3>
 								<div class="list-content service-content">{{list.content}}</div>
 							</div>
 						{% endfor %}
 					</div>
 				</div>
-				<div class="image-content">
+				<div class="image-content" data-aos="fadeIn">
 					<img src="{{Image(page.image).src}}" alt="{{Image(page.image).alt}}" class="img-responsive">
 				</div>
 			</div>
@@ -27,18 +28,19 @@
 			{% set page = field.meta('our_approach') %}
 			<div class="container">
 				<div class="text-content">
-					<h2 class="h3 title">{{page.title}}</h2>
-					<div class="content">{{page.content}}</div>
+					<h2 class="h3 title" data-aos="fadeIn">{{page.title}}</h2>
+					<div class="content" data-aos="fadeIn">{{page.content}}</div>
 					<div class="list">
 						{% for list in page.list %}
-							<div class="list-item">
+							{% set delay = (delay|default(100)) + 100 %}
+							<div class="list-item" data-aos="fade-up" data-aos-delay="{{delay}}">
 								<h3 class="list-title approach-title {% if loop.index == 1 %}is-active{% endif %}">{{list.title}}</h3>
 								<div class="list-content approach-content">{{list.content}}</div>
 							</div>
 						{% endfor %}
 					</div>
 				</div>
-				<div class="image-content">
+				<div class="image-content" data-aos="fadeIn">
 					<img src="{{Image(page.image).src}}" alt="{{Image(page.image).alt}}" class="img-responsive">
 				</div>
 			</div>

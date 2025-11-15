@@ -22,18 +22,24 @@ jQuery(document).ready(function ($) {
   //   disable: 'mobile',
   //   once: true
   // });
+  // Run AOS only after Slick finishes loading the first slide
+  $('.hero-slider').on('init', function () {
+    setTimeout(function () {
+      AOS.init({
+        duration: 1000,
+        easing: 'ease-in-quad',
+        disable: 'mobile',
+        once: true
+      });
+      AOS.refreshHard();
+    }, 100);
+  });
 
-  // AOS.refresh();
-
-  //     AOS.init({
-  //   startEvent: 'DOMContentLoaded',
-  //   duration: 800,
-  //   easing: 'ease-in-quad',
-  //   disable: 'mobile',
-  //   once: true
+  // // Refresh AOS on slide change
+  // $('.hero-slider').on('afterChange', function () {
+  //   AOS.refreshHard();
   // });
 
-  // AOS.refresh();
 
   // window.addEventListener('pageshow', function () {
   //   setTimeout(() => {
@@ -194,20 +200,25 @@ jQuery(document).ready(function ($) {
   $('.content-slider').slick({
     dots: true,
     infinite: false,
-    adaptiveHeight: true,
+    swipe: true,
     speed: 500,
     prevArrow: $('.arrowPrev'),
     nextArrow: $('.arrowNext'),
     slidesToShow: 1,
-    slidesToScroll: 1,
+    // slidesToScroll: 1,
     vertical: true,
     focusOnSelect: true,
   });
   // On slide change, update active segment in the circle
-  $('.content-slider').on('afterChange', function (event, slick, currentSlide) {
-    let segment = $(slick.$slides[currentSlide]).data('segment');
-    console.log(segment);
-    $('#sgcMainCircle').attr('src', `/path/to/circle-segment-${segment}.svg`);
-  });
 
+  // When slide changes, highlight correct SVG segment
+  $('.content-slider').on('afterChange', function (event, slick, currentSlide) {
+    const segment = $('.slider-content').eq(currentSlide).data('segment');
+
+    // remove active class from all segments
+    $('#mainCircle [id^="segment-"]').removeClass('active');
+
+    // activate current segment
+    $('#mainCircle #segment-' + segment).addClass('active');
+  });
 });

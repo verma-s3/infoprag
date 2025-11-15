@@ -4,18 +4,18 @@
 
 {% block content %}
 	<section class="{{field.slug}}-page" id="{{field.slug}}-page">
-		
+
 		<div class="about-us padding-lr padding-top" id="about-us">
 			{% set page = field.meta('about_us') %}
 			<div class="container">
-				<div class="text-content">
+				<div class="text-content" data-aos="fade-right">
 					<h2 class="h3 title">{{page.title}}</h2>
 					<div class="content">{{page.content}}</div>
 					<div class="btn">
 						<a href="{{page.button.link}}" class="custom-btn" aria-label="{{page.button.name}}">{{page.button.name}}</a>
 					</div>
 				</div>
-				<div class="image-content">
+				<div class="image-content" data-aos="fadeIn">
 					<img src="{{Image(page.image).src}}" alt="{{Image(page.image).alt}}" class="img-responsive">
 				</div>
 			</div>
@@ -27,16 +27,17 @@
 				<div class="image-content">
 					<div class="list">
 						{% for list in page.list %}
+							{% set count = (count | default(100)) + 50 %}
 							<div class="list-item">
-								<div class="logo">
+								<div class="logo" data-aos="zoom-in" data-aos-delay="{{count}}">
 									{{ function('file_get_contents', Image(list.logo).src) }}
 								</div>
-								<h3 class="list-title h5 service-title">{{list.name}}</h3>
+								<h3 class="list-title h5 service-title" data-aos="fadeIn" data-aos-delay="{{count}}">{{list.name}}</h3>
 							</div>
 						{% endfor %}
 					</div>
 				</div>
-				<div class="text-content">
+				<div class="text-content" data-aos="fade-left">
 					<h2 class="h3 title">{{page.title}}</h2>
 					<div class="content">{{page.content}}</div>
 					<div class="btn">
@@ -50,12 +51,12 @@
 		<div class="condo-manage padding" id="condo-manage" style="background-image: url({{Image(field.meta('condo_management').background_image).src}})">
 			{% set page = field.meta('condo_management') %}
 			<div class="container">
-				<div class="image-content">
+				<div class="image-content" data-aos="fade-left">
 					<div class="logo">
 						{{ function('file_get_contents', Image(page.logo).src) }}
 					</div>
 				</div>
-				<div class="text-content">
+				<div class="text-content" data-aos="fade-right">
 					<h2 class="white title">{{page.title}}</h2>
 					<div class="content white">{{page.content}}</div>
 					<div class="btn">
@@ -68,7 +69,7 @@
 		<div class="info-approach padding" id="info-approach">
 			{% set page = field.meta('infoprag_approach') %}
 			<div class="container">
-				<div class="text-content">
+				<div class="text-content" data-aos="fade-up">
 					<h2 class="h3 title">{{page.title}}</h2>
 					<div class="content">{{page.content}}</div>
 					<div class="btn">

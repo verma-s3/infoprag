@@ -7,10 +7,10 @@
 
 		<div class="why-smart-green padding" id="why-smart-green">
 			{% set page = field.meta('why_condo') %}
-			<div class="container">
+			<div class="container" data-aos="fadeIn">
 				<h2 class="h3 title">{{page.title}}</h2>
 				<div class="wheel-container">
-					<div class="svg-slider">
+					<div class="svg-slider" id="mainCircle">
 						{{ function('file_get_contents', Image(page.image).src) }}
 					</div>
 
@@ -50,11 +50,11 @@
 			{% set page = field.meta('our_vision') %}
 			<div class="container">
 				<div class="text-content">
-					<h2 class="h3 title">{{page.title}}</h2>
+					<h2 class="h3 title" data-aos="fadeIn">{{page.title}}</h2>
 					<div class="list">
 						{% for list in page.list %}
-							{% set count = (count | default(0)) + 1 %}
-							<div class="list-item">
+							{% set count, delay = (count | default(0)) + 1, (delay|default(100)) + 50 %}
+							<div class="list-item" data-aos="fade-up" data-aos-delay="{{delay}}">
 								<span>{{count}}</span>
 								<div class="list-content">
 									<h3 class="list-title">{{list.title}}</h3>
@@ -64,7 +64,7 @@
 						{% endfor %}
 					</div>
 				</div>
-				<div class="image-content">
+				<div class="image-content" data-aos="fadeIn">
 					<img src="{{Image(page.image).src}}" alt="{{Image(page.image).alt}}" class="img-responsive">
 				</div>
 			</div>
@@ -73,11 +73,12 @@
 		<div class="condo-management padding-lr padding-top" id="condo-management">
 			{% set page = field.meta('condo_management') %}
 			<div class="container">
-				<h2 class="h3 title">{{page.title}}</h2>
+				<h2 class="h3 title" data-aos="fadeIn">{{page.title}}</h2>
 				<div class="text-content">
 					<div class="list">
 						{% for list in page.list %}
-							<div class="list-item">
+							{% set delay = (delay|default(100)) + 100 %}
+							<div class="list-item" data-aos="fade-up" data-aos-delay="{{delay}}">
 								<img src="{{Image(list.image).src}}" alt="{{Image(list.image).alt}}" class="img-responsive">
 								<div class="list-details">
 									<h3 class="list-title center">{{list.title}}</h3>
@@ -93,11 +94,12 @@
 		<div class="core-functionality padding" id="core-functionality">
 			{% set page = field.meta('core_platform') %}
 			<div class="container">
-				<h2 class="h3 title">{{page.title}}</h2>
+				<h2 class="h3 title" data-aos="fadeIn">{{page.title}}</h2>
 				<div class="text-content">
 					<div class="list">
 						{% for faq in page.list %}
-							<div class="list-item">
+							{% set delay = (delay|default(100)) + 100 %}
+							<div class="list-item" data-aos="fade-up" data-aos-delay="{{delay}}">
 								<h3 class="faq-title">
 									{{ function('file_get_contents', Image(faq.logo).src) }}
 									{{faq.title}}
@@ -115,10 +117,11 @@
 		<div class="demo-videos padding" id="demo-videos">
 			{% set page = field.meta('demos') %}
 			<div class="container">
-				<h2 class="h3 title">{{page.title}}</h2>
+				<h2 class="h3 title" data-aos="fadeIn">{{page.title}}</h2>
 				<div class="videos" id="videos">
 					{% for item in page.list %}
-						<div class="list-item">
+						{% set delay = (delay|default(100)) + 100 %}
+						<div class="list-item" data-aos="fade-up" data-aos-delay="{{delay}}">
 							<div class="you_video">{{item.you_video}}</div>
 							<h3 class="video-title">{{item.title}}</h3>
 						</div>
@@ -126,7 +129,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="request-a-demo padding-lr" id="request-a-demo">
+		<div class="request-a-demo padding-lr" id="request-a-demo" data-aos="fadeIn">
 			{% set page = field.meta('request_demo') %}
 			<div class="container">
 				<div class="image-content">

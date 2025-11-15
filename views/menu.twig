@@ -1,9 +1,11 @@
 {% if menu and items %}
 	<ul>
 		{% for item in items %}
-			<li class="{{ item.classes | join(' ')}}">
+			{% set delay = (delay|default(50)) + 50 %}
+			<li
+				class="{{ item.classes | join(' ')}}" data-aos="flip-down" data-aos-delay="{{delay}}">
 				{# <a target="{{ item.target}}" href="{{ item.link}}">{{ item.title}}</a> #}
-				<a target="_self" href="{{ item.link}}"  aria-label="link to {{item.title}}">{{ item.title}}</a>
+				<a target="_self" href="{{ item.link}}" aria-label="link to {{item.title}}">{{ item.title}}</a>
 				{% include "menu.twig" with{'items':item.children} %}
 			</li>
 		{% endfor %}
