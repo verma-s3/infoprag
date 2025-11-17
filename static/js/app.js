@@ -23,17 +23,76 @@ jQuery(document).ready(function ($) {
   //   once: true
   // });
   // Run AOS only after Slick finishes loading the first slide
-  $('.hero-slider').on('init', function () {
-    setTimeout(function () {
-      AOS.init({
-        duration: 1000,
-        easing: 'ease-in-quad',
-        disable: 'mobile',
-        once: true
-      });
+  // Initialize AOS for all pages
+  if ($('.hero-slider').length) {
+
+    // Initialize the slider first
+    $('.hero-slider').slick({
+      dots: true,
+      centerMode: false,
+      infinite: false,
+      arrows: false,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 5000,
+      speed: 500,
+      fade: true,
+      cssEase: 'ease',
+      customPaging: function (slider, i) {
+        return '<button class="tab">' + $(slider.$slides[i]).data('title') + '<span class="slide-btn"></span></button>';
+      },
+    });
+
+    // After slider initializes, trigger AOS
+    $('.hero-slider').on('init', function () {
+      // Wait a short time to ensure first slide is rendered
+      setTimeout(function () {
+        AOS.init({
+          duration: 1000,
+          easing: 'ease-in-quad',
+          disable: 'mobile',
+          once: true
+        });
+        AOS.refreshHard();
+      }, 100);
+    });
+
+    // Slick sometimes doesn't fire 'init' on first load if called after slick()
+    // So trigger manually if needed
+    if ($('.hero-slider').hasClass('slick-initialized')) {
+      setTimeout(function () {
+        AOS.init({
+          duration: 1000,
+          easing: 'ease-in-quad',
+          disable: 'mobile',
+          once: true
+        });
+        AOS.refreshHard();
+      }, 100);
+    }
+
+    // Optional: refresh AOS on each slide change
+    $('.hero-slider').on('afterChange', function () {
       AOS.refreshHard();
-    }, 100);
+    });
+
+  } else {
+    // Pages without slider
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-quad',
+      disable: 'mobile',
+      once: true
+    });
+  }
+
+  // Force refresh on full page load to animate visible elements immediately
+  $(window).on('load', function () {
+    AOS.refresh();
   });
+
+
 
   // // Refresh AOS on slide change
   // $('.hero-slider').on('afterChange', function () {
