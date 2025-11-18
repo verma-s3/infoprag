@@ -1297,12 +1297,16 @@ header {
                     padding-block: var(--space-56);
                     flex-direction: row;
                     gap: 5%;
+                    height: 100%;
                 }
 
                 .svg-slider {
+
                     @media @min992 {
                         flex: 0 0 35%;
                     }
+
+
 
                     svg {
                         .img-responsive();
@@ -1313,6 +1317,8 @@ header {
                         #segment-1,
                         #segment-2,
                         #segment-3 {
+                            transition: all .35s ease;
+
                             path {
                                 transition: all .35s ease;
 
@@ -1417,15 +1423,17 @@ header {
                 .content-slider {
                     margin-bottom: 0px !important;
                     height: 100%;
+                    overflow: visible;
 
                     @media @min992 {
-                        flex: 0 0 45%;
+                        flex: 0 0 50%;
                     }
 
 
 
                     .slick-list {
                         height: 100% !important;
+                        overflow: visible;
 
                         .slick-track {
                             transform: none !important;
@@ -1436,29 +1444,91 @@ header {
                     .slider-content {
                         border-radius: 25px;
                         border: 1px solid var(--pri-100);
-                        overflow: hidden;
+                        overflow: visible;
                         margin-block: var(--space-xs);
+                        position: relative;
+                        width: 100% !important;
+                        margin-left: 1px;
 
-                        // position: relative;
-                        // z-index: 1;
+                        .lines-panel {
+                            .line-item {
+                                display: none;
 
-                        // &::before {
-                        //     content: '';
-                        //     position: absolute;
-                        //     top: -1px;
-                        //     left: -1px;
-                        //     right: -1px;
-                        //     bottom: -1px;
-                        //     background: linear-gradient(265deg, rgba(0, 70, 211, 0.65) 12.42%, rgba(138, 224, 41, 0.65) 54.69%, rgba(1, 62, 188, 0.65) 98.23%);
-                        //     border-radius: 30px;
-                        //     /* slightly bigger than inner border-radius */
-                        //     z-index: -1;
-                        // }
+                                @media @min992 {
+                                    position: absolute;
+
+                                    svg {
+                                        display: block;
+                                        width: 75%;
+                                        height: auto;
+
+                                    }
+
+                                }
+
+                                @media @min1600 {
+                                    svg {
+                                        width: 100%;
+                                    }
+                                }
+                            }
+                        }
+
+                        &:nth-of-type(1) {
+                            .lines-panel {
+                                .line-item {
+                                    left: -32%;
+                                    top: 40%;
+
+                                    @media @min1600 {
+                                        top: 16%;
+                                    }
+                                }
+                            }
+                        }
+
+                        &:nth-of-type(2) {
+                            .lines-panel {
+                                .line-item {
+                                    left: -70%;
+                                    bottom: 42%;
+
+                                    svg {
+                                        width: 58%;
+                                    }
+
+                                    @media @min1440 {
+                                        bottom: 40%;
+
+                                        svg {
+                                            width: 80%;
+                                        }
+                                    }
+
+                                    @media @min1600 {
+
+                                        svg {
+                                            width: 100%;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        &:nth-of-type(3) {
+                            .lines-panel {
+                                .line-item {
+                                    left: -32%;
+                                    top: 30%;
+                                }
+                            }
+                        }
 
                         .right-container {
                             background: linear-gradient(90deg, rgba(0, 71, 212, 0.15) -17.12%, rgba(48, 81, 146, 0.00) 74.65%);
                             padding: 24px;
                             .display-flex(flex, var(--space-sm), row, unset);
+                            border-radius: 25px;
                         }
 
                         svg {
@@ -1505,6 +1575,14 @@ header {
                             .content {
                                 display: block;
                             }
+
+                            .lines-panel {
+                                .line-item {
+                                    @media @min992 {
+                                        display: block;
+                                    }
+                                }
+                            }
                         }
                     }
 
@@ -1550,7 +1628,7 @@ header {
                     .display-flex(flex, var(--space-sm), row, center);
 
                     @media @min992 {
-                        flex: 0 0 10%;
+                        flex: 0 0 5%;
                         flex-direction: column;
                     }
 
@@ -1583,10 +1661,6 @@ header {
                                 fill: var(--neu-100);
                             }
                         }
-                    }
-
-                    @media @min992 {
-                        flex: 0 0 10%;
                     }
 
                     @media @max992 {
