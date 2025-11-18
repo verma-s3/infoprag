@@ -178,19 +178,19 @@ jQuery(document).ready(function ($) {
 
 
   //*** Scroll to Top *** use with less *** use with html ***
-  // $(window).scroll(function() {
-  //     if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
-  //         $('#return-to-top').fadeIn(200);    // Fade in the arrow
-  //     } else {
-  //         $('#return-to-top').fadeOut(200);   // Else fade out the arrow
-  //     }
-  // });
+  $(window).scroll(function () {
+    if ($(this).scrollTop() >= 600) {        // If page is scrolled more than 50px
+      $('#return-to-top').fadeIn(200);    // Fade in the arrow
+    } else {
+      $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+    }
+  });
 
-  // $('#return-to-top').click(function() {      // When arrow is clicked
-  //     $('body,html').animate({
-  //         scrollTop : 0                       // Scroll to top of body
-  //     }, 500);
-  // });//End Scroll to Top
+  $('#return-to-top').click(function () {      // When arrow is clicked
+    $('body,html').animate({
+      scrollTop: 0                       // Scroll to top of body
+    }, 500);
+  });//End Scroll to Top
 
 
 
@@ -279,5 +279,13 @@ jQuery(document).ready(function ($) {
 
     // activate current segment
     $('#mainCircle #segment-' + segment).addClass('active');
+  });
+  $('#mainCircle [id^="segment-"]').on('click', function () {
+    const segment = $(this).data('segment'); // get which segment was clicked
+
+    // Slick is zero-indexed, your segments are 1-indexed
+    const slideIndex = segment - 1;
+
+    $('.content-slider').slick('slickGoTo', slideIndex);
   });
 });

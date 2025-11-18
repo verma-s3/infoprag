@@ -9,13 +9,14 @@
 			{% set page = field.meta('about_us') %}
 			<div class="container">
 				<div class="text-content" data-aos="fade-right">
-					<h2 class="h3 title">{{page.title}}</h2>
+					<h2 class="h3 title desktop-title">{{page.title}}</h2>
 					<div class="content">{{page.content}}</div>
 					<div class="btn">
 						<a href="{{page.button.link}}" class="custom-btn" aria-label="{{page.button.name}}">{{page.button.name}}</a>
 					</div>
 				</div>
 				<div class="image-content" data-aos="fadeIn">
+				<h2 class="h3 title mobile-title">{{page.title}}</h2>
 					<img src="{{Image(page.image).src}}" alt="{{Image(page.image).alt}}" class="img-responsive">
 				</div>
 			</div>
@@ -25,6 +26,7 @@
 			{% set page = field.meta('our_services') %}
 			<div class="container">
 				<div class="image-content">
+					<h2 class="h3 title mobile-title">{{page.title}}</h2>
 					<div class="list">
 						{% for list in page.list %}
 							{% set count = (count | default(100)) + 50 %}
@@ -38,7 +40,7 @@
 					</div>
 				</div>
 				<div class="text-content" data-aos="fade-left">
-					<h2 class="h3 title">{{page.title}}</h2>
+					<h2 class="h3 title desktop-title">{{page.title}}</h2>
 					<div class="content">{{page.content}}</div>
 					<div class="btn">
 						<a href="/services-approach/#our-services" class="custom-btn" aria-label="Our Services">Explore Services</a>
