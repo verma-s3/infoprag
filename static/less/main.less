@@ -1250,19 +1250,19 @@ header {
 ***********************************/
 .services-approach-page {
 
-
     .our-services,
     .our-approach {
         .container {
+            align-items: unset !important;
             .container-section();
         }
     }
 
-    .our-services {
-        .container {
-            align-items: unset;
-        }
-    }
+    // .our-services {
+    //     .container {
+
+    //     }
+    // }
 
     .our-approach {
         background-color: var(--pri-400);
@@ -1306,118 +1306,192 @@ header {
                         flex: 0 0 35%;
                     }
 
-
-
                     svg {
                         .img-responsive();
                         height: auto;
-                        transition: all .35s ease;
                         cursor: pointer;
 
+                        /* Apply smooth transition to all paths only once */
                         #segment-1,
                         #segment-2,
                         #segment-3 {
-                            transition: all .35s ease;
-
-                            path {
-                                transition: all .35s ease;
-
-                                &:nth-of-type(1) {
-                                    fill: var(--white);
-                                }
-
-                                &:nth-of-type(2) {
-                                    fill: var(--pri-100);
-                                }
-                            }
-
-                            &.active {
-                                pointer-events: none;
-
-                                path {
-
-                                    &:nth-of-type(2) {
-                                        fill: var(--white);
-                                    }
-                                }
-                            }
+                            transition: fill 0.35s ease;
                         }
 
-                        #segment-1 {
-                            &:hover {
-                                path {
-                                    &:nth-of-type(1) {
-                                        fill: url(#paint0_linear_219_3193);
-                                    }
-
-                                    &:nth-of-type(2) {
-                                        fill: var(--white);
-                                    }
-                                }
-                            }
+                        /* Default segment fills */
+                        #segment-1 path:nth-of-type(1) {
+                            fill: var(--white);
                         }
 
-                        #segment-2 {
-                            &:hover {
-                                path {
-                                    &:nth-of-type(1) {
-                                        fill: url(#paint0_linear_219_3214);
-                                    }
-
-                                    &:nth-of-type(2) {
-                                        fill: var(--white);
-                                    }
-                                }
-                            }
+                        #segment-1 path:nth-of-type(2) {
+                            fill: var(--pri-100);
                         }
 
-                        #segment-3 {
-                            &:hover {
-                                path {
-                                    &:nth-of-type(1) {
-                                        fill: url(#paint0_linear_219_3273);
-                                    }
-
-                                    &:nth-of-type(2) {
-                                        fill: var(--white);
-                                    }
-                                }
-                            }
+                        #segment-2 path:nth-of-type(1) {
+                            fill: var(--white);
                         }
 
-                        #segment-1 {
-
-                            &.active {
-                                path {
-                                    &:nth-of-type(1) {
-                                        fill: url(#paint0_linear_219_3193);
-                                    }
-                                }
-                            }
+                        #segment-2 path:nth-of-type(2) {
+                            fill: var(--pri-100);
                         }
 
-                        #segment-2 {
-
-                            &.active {
-                                path {
-                                    &:nth-of-type(1) {
-                                        fill: url(#paint0_linear_219_3214);
-                                    }
-                                }
-                            }
+                        #segment-3 path:nth-of-type(1) {
+                            fill: var(--white);
                         }
 
-                        #segment-3 {
+                        #segment-3 path:nth-of-type(2) {
+                            fill: var(--pri-100);
+                        }
 
-                            &.active {
-                                path {
-                                    &:nth-of-type(1) {
-                                        fill: url(#paint0_linear_219_3273);
-                                    }
-                                }
-                            }
+                        /* Hover state */
+                        #segment-1:hover path:nth-of-type(1) {
+                            fill: url(#paint0_linear_219_3193);
+                        }
+
+                        #segment-2:hover path:nth-of-type(1) {
+                            fill: url(#paint0_linear_219_3214);
+                        }
+
+                        #segment-3:hover path:nth-of-type(1) {
+                            fill: url(#paint0_linear_219_3273);
+                        }
+
+                        /* Active state */
+                        #segment-1.active path:nth-of-type(1) {
+                            fill: url(#paint0_linear_219_3193);
+                        }
+
+                        #segment-2.active path:nth-of-type(1) {
+                            fill: url(#paint0_linear_219_3214);
+                        }
+
+                        #segment-3.active path:nth-of-type(1) {
+                            fill: url(#paint0_linear_219_3273);
+                        }
+
+                        /* Always keep secondary path white when active or hover */
+                        #segment-1.active path:nth-of-type(2),
+                        #segment-1:hover path:nth-of-type(2),
+                        #segment-2.active path:nth-of-type(2),
+                        #segment-2:hover path:nth-of-type(2),
+                        #segment-3.active path:nth-of-type(2),
+                        #segment-3:hover path:nth-of-type(2) {
+                            fill: var(--white);
                         }
                     }
+
+
+                    // svg {
+                    //     .img-responsive();
+                    //     height: auto;
+                    //     // transition: all .35s ease;
+                    //     cursor: pointer;
+
+                    //     #segment-1,
+                    //     #segment-2,
+                    //     #segment-3 {
+                    //         transition: fill .35s ease;
+
+                    //         path {
+                    //             transition: fill .35s ease;
+
+                    //             &:nth-of-type(1) {
+                    //                 fill: var(--white);
+                    //             }
+
+                    //             &:nth-of-type(2) {
+                    //                 fill: var(--pri-100);
+                    //             }
+                    //         }
+
+                    //         &.active {
+                    //             pointer-events: none;
+
+                    //             path {
+                    //                 transition: fill .35s ease;
+
+                    //                 &:nth-of-type(2) {
+                    //                     fill: var(--white);
+                    //                 }
+                    //             }
+                    //         }
+                    //     }
+
+                    //     #segment-1 {
+                    //         &:hover {
+                    //             path {
+                    //                 &:nth-of-type(1) {
+                    //                     fill: url(#paint0_linear_219_3193);
+                    //                 }
+
+                    //                 &:nth-of-type(2) {
+                    //                     fill: var(--white);
+                    //                 }
+                    //             }
+                    //         }
+                    //     }
+
+                    //     #segment-2 {
+                    //         &:hover {
+                    //             path {
+                    //                 &:nth-of-type(1) {
+                    //                     fill: url(#paint0_linear_219_3214);
+                    //                 }
+
+                    //                 &:nth-of-type(2) {
+                    //                     fill: var(--white);
+                    //                 }
+                    //             }
+                    //         }
+                    //     }
+
+                    //     #segment-3 {
+                    //         &:hover {
+                    //             path {
+                    //                 &:nth-of-type(1) {
+                    //                     fill: url(#paint0_linear_219_3273);
+                    //                 }
+
+                    //                 &:nth-of-type(2) {
+                    //                     fill: var(--white);
+                    //                 }
+                    //             }
+                    //         }
+                    //     }
+
+                    //     #segment-1 {
+
+                    //         &.active {
+                    //             path {
+                    //                 &:nth-of-type(1) {
+                    //                     fill: url(#paint0_linear_219_3193);
+                    //                 }
+                    //             }
+                    //         }
+                    //     }
+
+                    //     #segment-2 {
+
+                    //         &.active {
+                    //             path {
+                    //                 &:nth-of-type(1) {
+                    //                     fill: url(#paint0_linear_219_3214);
+                    //                 }
+                    //             }
+                    //         }
+                    //     }
+
+                    //     #segment-3 {
+
+                    //         &.active {
+                    //             path {
+                    //                 &:nth-of-type(1) {
+                    //                     fill: url(#paint0_linear_219_3273);
+                    //                 }
+                    //             }
+                    //         }
+                    //     }
+                    // }
                 }
 
                 .content-slider {
@@ -1453,6 +1527,7 @@ header {
                         .lines-panel {
                             .line-item {
                                 display: none;
+                                pointer-events: none;
 
                                 @media @min992 {
                                     position: absolute;

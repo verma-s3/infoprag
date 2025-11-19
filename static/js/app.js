@@ -260,32 +260,42 @@ jQuery(document).ready(function ($) {
     dots: true,
     infinite: false,
     swipe: true,
-    speed: 500,
+    // speed: 500,
     prevArrow: $('.arrowPrev'),
     nextArrow: $('.arrowNext'),
     slidesToShow: 1,
-    // slidesToScroll: 1,
     vertical: true,
     focusOnSelect: true,
   });
-  // On slide change, update active segment in the circle
 
-  // When slide changes, highlight correct SVG segment
+  // Function to set active SVG segment
+  function setActiveSegment(segment) {
+    $('#mainCircle [id^="segment-"]').removeClass('active');
+    $('#mainCircle #segment-' + segment).addClass('active');
+  }
+
+  // Update SVG when slide changes (swipe/arrows)
   $('.content-slider').on('afterChange', function (event, slick, currentSlide) {
     const segment = $('.slider-content').eq(currentSlide).data('segment');
-
-    // remove active class from all segments
-    $('#mainCircle [id^="segment-"]').removeClass('active');
-
-    // activate current segment
-    $('#mainCircle #segment-' + segment).addClass('active');
+    setActiveSegment(segment);
   });
-  $('#mainCircle [id^="segment-"]').on('click', function () {
-    const segment = $(this).data('segment'); // get which segment was clicked
 
-    // Slick is zero-indexed, your segments are 1-indexed
+  // Click on SVG segment
+  $('#mainCircle [id^="segment-"]').on('click', function () {
+    const segment = $(this).data('segment');
     const slideIndex = segment - 1;
 
+    setActiveSegment(segment);       // **update SVG immediately**
     $('.content-slider').slick('slickGoTo', slideIndex);
   });
+
+  // Optional: click on slide content itself to jump to another slide
+  $('.slider-content').on('click', function () {
+    const segment = $(this).data('segment');
+    const slideIndex = segment - 1;
+
+    setActiveSegment(segment);       // **update SVG immediately**
+    $('.content-slider').slick('slickGoTo', slideIndex);
+  });
+
 });
