@@ -4,24 +4,55 @@
 
 {% block content %}
 	<section class="{{field.slug}}-page" id="{{field.slug}}-page">
-
-		<div class="about-us padding-lr padding-top" id="about-us">
-			{% set page = field.meta('about_us') %}
+		<div class="condo-manage padding" id="condo-manage">
+			{% set page = field.meta('condo_management') %}
 			<div class="container">
+				{% if page.title is not empty %}
+					<h2 class="h3 title mobile-title">{{page.title}}</h2>
+				{% endif %}
+				<div class="image-content" data-aos="fade-left">
+					<img src="{{Image(page.background_image).src}}" alt="{{Image(page.background_image).src}}" class="img-responsive">
+					<div class="logo">
+						{{ function('file_get_contents', Image(page.logo).src) }}
+					</div>
+				</div>
 				<div class="text-content" data-aos="fade-right">
-					<h2 class="h3 title desktop-title">{{page.title}}</h2>
-					<div class="content">{{page.content}}</div>
+					{% if page.title is not empty %}
+						<h2 class="h3 title desktop-title">{{page.title}}</h2>
+					{% endif %}
+					<div class="content white">{{page.content}}</div>
 					<div class="btn">
 						<a href="{{page.button.link}}" class="custom-btn" aria-label="{{page.button.name}}">{{page.button.name}}</a>
 					</div>
 				</div>
+			</div>
+		</div>
+		<div class="why-us padding" id="why-us">
+			{% set page = field.meta('why_us') %}
+			<div class="container">
+				<div class="text-content" data-aos="fade-right">
+					{% if page.title is not empty %}
+						<h2 class="h3 title desktop-title">{{page.title}}</h2>
+					{% endif %}
+					{% if page.content is not empty %}
+						<div class="content">{{page.content}}</div>
+					{% endif %}
+					{% if page.button.link is not empty %}
+						<div class="btn">
+							<a href="{{page.button.link}}" class="custom-btn" aria-label="{{page.button.name}}">{{page.button.name}}</a>
+						</div>
+					{% endif %}
+				</div>
 				<div class="image-content" data-aos="fadeIn">
-				<h2 class="h3 title mobile-title">{{page.title}}</h2>
-					<img src="{{Image(page.image).src}}" alt="{{Image(page.image).alt}}" class="img-responsive">
+					{% if page.title is not empty %}
+						<h2 class="h3 title mobile-title">{{page.title}}</h2>
+					{% endif %}
+					{% if page.image is not empty%}
+						<img src="{{Image(page.image).src}}" alt="{{Image(page.image).alt}}" class="img-responsive">
+					{% endif %}
 				</div>
 			</div>
 		</div>
-
 		<div class="our-services padding" id="our-services">
 			{% set page = field.meta('our_services') %}
 			<div class="container">
@@ -49,24 +80,23 @@
 
 			</div>
 		</div>
-
-		<div class="condo-manage padding" id="condo-manage" style="background-image: url({{Image(field.meta('condo_management').background_image).src}})">
-			{% set page = field.meta('condo_management') %}
+		<div class="about-us padding-lr padding-top" id="about-us">
+			{% set page = field.meta('about_us') %}
 			<div class="container">
-				<div class="image-content" data-aos="fade-left">
-					<div class="logo">
-						{{ function('file_get_contents', Image(page.logo).src) }}
-					</div>
-				</div>
 				<div class="text-content" data-aos="fade-right">
-					<h2 class="white title">{{page.title}}</h2>
-					<div class="content white">{{page.content}}</div>
+					<h2 class="h3 title desktop-title">{{page.title}}</h2>
+					<div class="content">{{page.content}}</div>
 					<div class="btn">
 						<a href="{{page.button.link}}" class="custom-btn" aria-label="{{page.button.name}}">{{page.button.name}}</a>
 					</div>
 				</div>
+				<div class="image-content" data-aos="fadeIn">
+					<h2 class="h3 title mobile-title">{{page.title}}</h2>
+					<img src="{{Image(page.image).src}}" alt="{{Image(page.image).alt}}" class="img-responsive">
+				</div>
 			</div>
 		</div>
+
 
 		<div class="info-approach padding" id="info-approach">
 			{% set page = field.meta('infoprag_approach') %}

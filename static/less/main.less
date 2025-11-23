@@ -589,6 +589,20 @@ div {
     }
 }
 
+.blue-btn {
+    .custom-btn();
+    color: var(--white);
+    background: linear-gradient(91deg, #284379 1.14%, #91A4CA 99.19%);
+    border: none;
+    transition: all .5s ease-in-out;
+    background-size: 100%;
+    background-position: left center;
+
+    &:hover {
+        background-size: 500%;
+    }
+}
+
 img {
     height: auto;
 }
@@ -757,6 +771,8 @@ header {
     //home page gero section::after
     &.hero-home {
         .hero-slider {
+            margin-bottom: 0px;
+
             .hero-slide {
                 position: relative;
 
@@ -778,7 +794,7 @@ header {
                         max-height: 820px;
                         object-fit: cover;
                         object-position: left center;
-                        filter: brightness(0.4);
+                        filter: brightness(0.7);
 
                         @media @min1280 {
                             height: calc(100vh - 112px);
@@ -786,20 +802,13 @@ header {
                     }
                 }
 
-                &:nth-child(1) {
+                &:nth-child(2) {
                     .text-content .btn a {
-                        color: var(--white);
-                        border-color: var(--white);
-                        background: rgba(255, 255, 255, 0.45);
-
-                        &:hover {
-                            background-color: var(--pri-100);
-                            border-color: var(--pri-100);
-                        }
+                        .blue-btn();
                     }
                 }
 
-                &:nth-child(2) {
+                &:nth-child(1) {
                     .text-content .btn a {
                         .grad-btn();
                     }
@@ -867,7 +876,7 @@ header {
             }
 
             .slick-dots {
-                bottom: var(--space-md);
+                bottom: var(--space-xs);
                 .display-flex(flex, 212px, row, center);
                 justify-content: center;
                 transition: all .35s ease-in-out;
@@ -956,7 +965,9 @@ header {
 .home-page {
 
     .our-services,
-    .about-us {
+    .about-us,
+    .why-us,
+    .condo-manage {
         position: relative;
         z-index: 1;
 
@@ -1006,7 +1017,7 @@ header {
             }
 
             @media @min1640 {
-                gap: var(--space-xxl);
+                gap: var(--space-xl);
             }
 
             .text-content {
@@ -1030,7 +1041,8 @@ header {
     }
 
 
-    .about-us {
+    .about-us,
+    .why-us {
         &::before {
             background-image: url('@{images}/contact-pattern-right.svg');
             right: 0;
@@ -1039,11 +1051,41 @@ header {
 
         @media @max992 {
             &::before {
-                background-position: right 15%;
+                background-position: right 22%;
             }
 
             .image-content {
                 order: -1;
+            }
+        }
+
+        @media @min992 {
+            .image-content {
+                img {
+                    height: 450px;
+                    object-fit: cover;
+                    object-position: center;
+                }
+            }
+        }
+    }
+
+    #why-us {
+        background: linear-gradient(90deg, rgba(0, 71, 212, 0.15) -17.12%, rgba(48, 81, 146, 0.00) 74.65%);
+
+        @media @min992 {
+            .text-content {
+                border-radius: 20px;
+                background-color: var(--white);
+                padding: var(--space-24);
+
+                @media @min1640 {
+                    padding: var(--space-md);
+                }
+
+                .content {
+                    margin-top: 24px;
+                }
             }
         }
     }
@@ -1090,44 +1132,69 @@ header {
     }
 
     .condo-manage {
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center right;
-        position: relative;
+        .h3 {
+            padding-right: 0px !important;
 
-        &::before {
-            content: '';
-            position: absolute;
-            display: block;
-            width: 100%;
-            height: 100%;
-            inset: 0;
-            background-color: rgba(0, 0, 0, 0.6);
+            @media @min600 {
+                padding-right: 24px !important;
+            }
         }
 
         .container {
-            max-width: 1210px;
-            .container-section();
-            position: relative;
-            z-index: 10;
+            .image-content {
+                justify-self: center;
+                position: relative;
+                border-radius: 20px;
+                overflow: hidden;
 
-            @media @min1280 {
-                gap: var(--space-lg);
-            }
+                .logo {
+                    position: absolute;
+                    top: 50%;
+                    text-align: center;
+                    transform: translateY(-50%);
+                    display: block;
+                    width: 100%;
+                    height: auto;
 
-            @media @min1640 {
-                gap: var(--space-xxl);
+                    svg {
+                        max-width: 238px;
+                        width: 100%;
+                        display: block;
+                        height: auto;
+                        margin: auto;
+
+                        @media @min768 {
+                            max-width: 338px;
+                        }
+
+                        >path {
+                            fill: var(--white);
+                        }
+                    }
+                }
+
+                img {
+                    height: 350px;
+                    object-fit: cover;
+                    object-position: center;
+
+                    @media @min768 {
+                        height: 450px;
+                    }
+                }
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    inset: 0;
+                    background-color: rgba(0, 0, 0, 0.6);
+                }
             }
 
             .text-content {
-                h2 {
-                    background-image: none;
-                    padding: 0px;
-                }
-
-                p {
-                    .white();
-                }
 
                 .content,
                 .btn {
@@ -1137,43 +1204,11 @@ header {
                 }
 
                 .btn a {
-                    color: var(--white);
-                    border-color: var(--white);
-                    background: rgba(255, 255, 255, 0.45);
-
-                    &:hover {
-                        background-color: var(--pri-100);
-                        border-color: var(--pri-100);
-                    }
-                }
-
-                @media @min992 {
-                    order: -1;
-
-                    .content {
-                        max-width: 550px;
-                        width: 100%;
-                        display: block;
-                    }
+                    .grad-btn();
                 }
             }
 
-            .image-content {
-                justify-self: center;
 
-                .logo {
-                    svg {
-                        max-width: 338px;
-                        width: 100%;
-                        display: block;
-                        height: auto;
-
-                        >path {
-                            fill: var(--white);
-                        }
-                    }
-                }
-            }
         }
     }
 
@@ -2031,6 +2066,11 @@ header {
         background: url('@{images}/contact-pattern-left.svg') no-repeat left bottom;
         left: 0;
         bottom: 0;
+        display: none;
+
+        @media @min1280 {
+            display: block;
+        }
     }
 
     &::after {

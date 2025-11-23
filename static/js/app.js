@@ -4,9 +4,6 @@ jQuery(document).ready(function ($) {
     $(this).toggleClass('active');
     $('#overlay').toggleClass('open');
     $('html').toggleClass('hidden');
-    // if ($('header').hasClass('fixed-header')) {
-    //   $('header').toggleClass('overlay-header');
-    // }
   });
 
 
@@ -15,14 +12,7 @@ jQuery(document).ready(function ($) {
     $('#toggle').click();
   });
 
-  // AOS.init({
-  //   startEvent: 'DOMContentLoaded',
-  //   duration: 1000,
-  //   easing: 'ease-in-quad',
-  //   disable: 'mobile',
-  //   once: true
-  // });
-  // Run AOS only after Slick finishes loading the first slide
+
   // Initialize AOS for all pages
   if ($('.hero-slider').length) {
 
@@ -63,9 +53,10 @@ jQuery(document).ready(function ($) {
     if ($('.hero-slider').hasClass('slick-initialized')) {
       setTimeout(function () {
         AOS.init({
-          duration: 1000,
+          duration: 800,
           easing: 'ease-in-quad',
           disable: 'mobile',
+          offset: 150,
           once: true
         });
         AOS.refreshHard();
@@ -80,9 +71,10 @@ jQuery(document).ready(function ($) {
   } else {
     // Pages without slider
     AOS.init({
-      duration: 1000,
+      duration: 800,
       easing: 'ease-in-quad',
       disable: 'mobile',
+      offset: 150,
       once: true
     });
   }
@@ -91,30 +83,6 @@ jQuery(document).ready(function ($) {
   $(window).on('load', function () {
     AOS.refresh();
   });
-
-
-
-  // // Refresh AOS on slide change
-  // $('.hero-slider').on('afterChange', function () {
-  //   AOS.refreshHard();
-  // });
-
-
-  // window.addEventListener('pageshow', function () {
-  //   setTimeout(() => {
-  //     window.scrollBy(0, 1); // Nudge scroll to trigger observers
-  //     window.scrollBy(0, -1);
-  //     AOS.refreshHard();
-  //   }, 50);
-  // });
-
-  // $(window).one('scroll', function() {
-  //   AOS.refresh();
-  // });
-
-  // if ('scrollRestoration' in history) {
-  //   history.scrollRestoration = 'manual';
-  // }
 
 
   // //*** Smooth Scroll ***
@@ -142,41 +110,6 @@ jQuery(document).ready(function ($) {
     });
   });
 
-
-  //*** Fixed header ***
-  // function fixedHeaderOnScroll(){
-  //   // var heroHeight = window.innerHeight; //use me if want to display fixed header according to innerHeight.
-  //   // if ($(this).scrollTop() >= heroHeight) {// 
-  //   if ($(this).scrollTop() >= 0) {        // If page is scrolled 
-  //       $('header').addClass('fixed-header');    // Fade in the arrow
-  //   } else {
-  //       $('header').removeClass('fixed-header');   // Else fade out the arrow
-  //   }
-  // }
-
-  /************************************************
-  uncomment follwoing code if window.innerheight is
-  included in fixedHeaderOnScroll function.  
-  *************************************************/
-
-  // $(window).on('load scroll resize', function () {
-  //   fixedHeaderOnScroll();
-  // });
-
-  // $(window).on('load', function () {
-  //   fixedHeaderOnScroll();
-  // });
-
-  // $(window).scroll(function () {
-  //   fixedHeaderOnScroll();
-  // });
-
-
-  // $(window).resize(function() {
-  //   fixedHeaderOnScroll();
-  // });
-
-
   //*** Scroll to Top *** use with less *** use with html ***
   $(window).scroll(function () {
     if ($(this).scrollTop() >= 600) {        // If page is scrolled more than 50px
@@ -191,42 +124,6 @@ jQuery(document).ready(function ($) {
       scrollTop: 0                       // Scroll to top of body
     }, 500);
   });//End Scroll to Top
-
-
-
-  //*** Flexslider ***
-  // var $flexslider = $('.flex-slider');
-  // $flexslider.flexslider({
-  //   smoothHeight: false,
-  //   slideshow: true,
-  //   arrows: false,
-  //   dots: true,
-  //   controlNav: true,
-  //   directionNav: true,
-  //   slideshowSpeed: 5000,
-  //   useCSS: false /* Chrome fix*/
-  // });// End Flexslider
-
-
-
-  //Slick SLider
-  $('.hero-slider').slick({
-    dots: true,
-    centerMode: false,
-    infinite: false,
-    arrows: false,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    speed: 500,
-    fade: true,
-    cssEase: 'ease',
-    customPaging: function (slider, i) {
-      return '<button class="tab">' + $(slider.$slides[i]).data('title') + '<span class="slide-btn"></span></button>';
-    },
-  });
-
 
 
   function faq($title, $content, $section) {
