@@ -54,9 +54,9 @@
 					<h2 class="h3 title" data-aos="fadeIn">{{page.title}}</h2>
 					<div class="list">
 						{% for list in page.list %}
-							{% set count, delay = (count | default(0)) + 1, (delay|default(100)) + 50 %}
+							{% set delay = (delay | default(100)) + 50 %}
 							<div class="list-item" data-aos="fade-up" data-aos-delay="{{delay}}">
-								<span>{{count}}</span>
+								<span>{{ function('file_get_contents', Image(list.logo).src) }}</span>
 								<div class="list-content">
 									<h3 class="list-title">{{list.title}}</h3>
 									<div class="content">{{list.content}}</div>
@@ -78,7 +78,7 @@
 				<div class="text-content">
 					<div class="list">
 						{% for list in page.list %}
-							{% set delay = (delay|default(100)) + 100 %}
+							{% set delay = (delay | default(100)) + 100 %}
 							<div class="list-item" data-aos="fade-up" data-aos-delay="{{delay}}">
 								<img src="{{Image(list.image).src}}" alt="{{Image(list.image).alt}}" class="img-responsive">
 								<div class="list-details">
@@ -99,7 +99,7 @@
 				<div class="text-content">
 					<div class="list">
 						{% for faq in page.list %}
-							{% set delay = (delay|default(100)) + 100 %}
+							{% set delay = (delay | default(100)) + 100 %}
 							<div class="list-item" data-aos="fade-up" data-aos-delay="{{delay}}">
 								<h3 class="faq-title">
 									{{ function('file_get_contents', Image(faq.logo).src) }}
@@ -121,7 +121,7 @@
 				<h2 class="h3 title" data-aos="fadeIn">{{page.title}}</h2>
 				<div class="videos" id="videos">
 					{% for item in page.list %}
-						{% set delay = (delay|default(100)) + 100 %}
+						{% set delay = (delay | default(100)) + 100 %}
 						<div class="list-item" data-aos="fade-up" data-aos-delay="{{delay}}">
 							<div class="you_video">{{item.you_video}}</div>
 							<h3 class="video-title">{{item.title}}</h3>
