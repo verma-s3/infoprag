@@ -2238,10 +2238,12 @@ footer {
 
         .details {
             .display-flex(flex, var(--space-md), column, center);
+            position: relative;
+            z-index: 20 !important;
 
             .footer-menu {
                 position: relative;
-                z-index: 5;
+                z-index: 999 !important;
 
                 ul {
                     list-style: none;
@@ -2264,6 +2266,7 @@ footer {
                         margin: 0;
                         line-height: normal;
                         transform: none;
+                        pointer-events: all !important;
 
                         a {
                             display: block;
